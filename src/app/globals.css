@@ -1,26 +1,224 @@
-@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2a2a2a;
+  font-family: 'VT323', monospace;
+  color: #e0e0e0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* The main container for the whole TV set */
+.tv-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* The boxy body of the TV */
+.tv-body {
+  width: 90vw;
+  height: 90vh;
+  background: linear-gradient(to right, #1a1a1a, #0d0d0d, #1a1a1a);
+  border: 15px solid #111;
+  border-radius: 30px;
+  box-shadow:
+    inset 0 0 25px #000,
+    0 10px 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+}
+
+/* Container for the screen to create an inner bezel */
+.tv-screen-container {
+  flex-grow: 1;
+  background-color: #000;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+
+  /* This is crucial for the screen effects */
+}
+
+/* The actual screen where content is displayed */
+.tv-screen {
+  width: 100%;
+  height: 100%;
+  background-color: #1a1c24;
+  border-radius: 15px;
+  /* Creates the curved screen effect */
+  position: relative;
+  box-shadow: 0 0 150px rgba(72, 168, 255, 0.2);
+  overflow: auto;
+}
+
+.tv-screen .content {
+  padding: 20px;
+  text-align: center;
+  color: #c8ffc8;
+
+  text-shadow: 0 0 5px #90ee90, 0 0 10px #90ee90;
+}
+
+.content {
+  height: 100%;
+}
+
+/* --- Screen Effects --- */
+
+/* Horizontal scan lines effect */
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.2) 70%,
+      rgba(255, 255, 255, 0));
+  background-size: 100% 4px;
+  animation: scan 15s linear infinite;
+  pointer-events: none;
+
+}
+
+/* Screen flicker effect */
+.flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: flicker 0.15s infinite;
+  pointer-events: none;
+}
+
+/* --- TV Details --- */
+
+.tv-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px 5px;
+}
+
+.speaker-grille {
+  width: 120px;
+  height: 60px;
+  background-image:
+    radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 5px 5px;
+  background-color: #111;
+  border-radius: 5px;
+}
+
+.knob-container {
+  display: flex;
+}
+
+.knob {
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #555, #222);
+  border: 2px solid #666;
+  border-radius: 50%;
+  margin-left: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.knob::after {
+  content: '';
+  position: absolute;
+  width: 80%;
+  height: 2px;
+  background-color: #888;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.antenna {
+  position: absolute;
+  top: -65px;
+  right: 70px;
+  transform: rotate(15deg);
+}
+
+.antenna-rod {
+  width: 4px;
+  height: 80px;
+  background-color: #888;
+  border-radius: 2px;
+  position: absolute;
+  bottom: 0;
+}
+
+.antenna-rod:first-child {
+  transform: rotate(-25deg);
+  height: 100px;
+}
+
+.antenna-rod:last-child {
+  transform: rotate(25deg);
+}
+
+.antenna-rod::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -3px;
+}
+
+.tv-stand {
+  width: 250px;
+  height: 20px;
+  background-color: #111;
+  border-radius: 0 0 10px 10px;
+}
+
+
+/* --- Keyframe Animations --- */
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes scan {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 -200px;
+  }
+}
+
+.embed {
+  min-width: -webkit-fill-available;
+  min-height: 665px;
+  top: 20px;
+  position: relative;
 }
