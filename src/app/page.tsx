@@ -9,9 +9,7 @@ import ActiveChannel from './ActiveChannel';
 export default function Home() {
   const [position, setPos] = useState(0);
   const [change, changeChannel] = useState(false);
-  const embeds = [
-    <iframe className="embed" key={'mike'} src="https://www.youtube.com/embed/0cDe2pK4SoU?si=Wj_zYXZ5qdB7rX-B" title="YouTube video player" frameBorder={'none'} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
-  ];
+
   const carouselItems = [
     {
       id: 1, content: <iframe className="embed" key={'mike'} src="https://www.youtube.com/embed/0cDe2pK4SoU?si=Wj_zYXZ5qdB7rX-B" title="YouTube video player" frameBorder={'none'} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
