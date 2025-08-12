@@ -17,11 +17,13 @@ body {
   align-items: center;
 }
 
+
+
 /* The boxy body of the TV */
 .tv-body {
   width: 90vw;
   height: 90vh;
-  background: linear-gradient(to right, #1a1a1a, #0d0d0d, #1a1a1a);
+  background: linear-gradient(to right, #855e42, #855e42, #855e42);
   border: 15px solid #111;
   border-radius: 30px;
   box-shadow:
@@ -49,12 +51,29 @@ body {
 .tv-screen {
   width: 100%;
   height: 100%;
-  background-color: #1a1c24;
+  background-color: black;
   border-radius: 15px;
   /* Creates the curved screen effect */
   position: relative;
   box-shadow: 0 0 150px rgba(72, 168, 255, 0.2);
   overflow: auto;
+}
+
+@media (max-width: 900px) {
+  body {
+    transform: rotate(90deg) !important;
+
+  }
+
+  .tv-body {
+    height: 90vw !important;
+    width: 90vh !important;
+  }
+
+  .embed {
+    width: 300px !important;
+  }
+
 }
 
 .tv-screen .content {
@@ -67,6 +86,7 @@ body {
 
 .content {
   height: 100%;
+
 }
 
 /* --- Screen Effects --- */
@@ -125,9 +145,11 @@ body {
 }
 
 .knob {
-  width: 45px;
-  height: 45px;
-  background: linear-gradient(135deg, #555, #222);
+  width: 65px;
+  height: 35px;
+  transform: rotate(45deg);
+  border-radius: 100px / 50px;
+  background: linear-gradient(135deg, #555, black);
   border: 2px solid #666;
   border-radius: 50%;
   margin-left: 20px;
@@ -137,13 +159,16 @@ body {
 
 .knob::after {
   content: '';
-  position: absolute;
-  width: 80%;
-  height: 2px;
-  background-color: #888;
-  top: 50%;
-  left: 10%;
-  transform: translateY(-50%) rotate(45deg);
+
+
+}
+
+.knob img {
+  transform: rotate(-45deg);
+  position: fixed;
+
+  right: 20px;
+  top: 5px;
 }
 
 .antenna {
