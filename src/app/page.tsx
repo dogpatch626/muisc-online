@@ -17,7 +17,7 @@ export default function Home() {
     { id: 2, content: <iframe className="embed" key={"dj"} src="https://www.youtube.com/embed/pfLKzdBxd98?si=FGZAhTytMZp8Ne-Z" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
     { id: 3, content: <iframe className="embed" key={"sade"} src="https://www.youtube.com/embed/kcPc18SG6uA?si=jyhnBzDcvHUjYAKY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
     { id: 4, content: <iframe className="embed" src="https://www.youtube.com/embed/04mfKJWDSzI?si=6orlk7BtIn4rqutH" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
-    { id: 5, content: <h2>Slide 5</h2> },
+    { id: 5, content: <h2>Slide mow</h2> },
     { id: 6, content: <h2>Slide 6</h2> },
   ];
 
