@@ -1,4 +1,8 @@
+@import "tailwindcss";
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+
+@tailwind utilities;
 
 body {
   display: flex;
@@ -17,6 +21,13 @@ body {
   align-items: center;
 }
 
+.devForm {
+  display: flex;
+  flex-direction: column;
+
+
+
+}
 
 
 /* The boxy body of the TV */
@@ -59,7 +70,7 @@ body {
   overflow: auto;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 700px) {
   body {
     transform: rotate(90deg) !important;
 
@@ -171,30 +182,8 @@ body {
   top: 5px;
 }
 
-.antenna {
-  position: absolute;
-  top: -65px;
-  right: 70px;
-  transform: rotate(15deg);
-}
 
-.antenna-rod {
-  width: 4px;
-  height: 80px;
-  background-color: #888;
-  border-radius: 2px;
-  position: absolute;
-  bottom: 0;
-}
 
-.antenna-rod:first-child {
-  transform: rotate(-25deg);
-  height: 100px;
-}
-
-.antenna-rod:last-child {
-  transform: rotate(25deg);
-}
 
 .antenna-rod::after {
   content: '';

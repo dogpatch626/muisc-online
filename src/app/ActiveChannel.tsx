@@ -7,7 +7,7 @@ type ActiveChannelProps = ComponentProps<'div'> & {
 }
 
 
-export default function ActiveChannel({ channel }: ActiveChannelProps) {
+export default function ActiveChannel({ channel, ...props }: ActiveChannelProps) {
     return (
         <div className='w-12/12 h-12/12'>{channel.content}</div>
     )
