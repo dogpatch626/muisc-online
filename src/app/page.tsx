@@ -8,7 +8,7 @@ import ActiveChannel from './ActiveChannel';
 
 export default function Home() {
   const [position, setPos] = useState(0);
-  const [change, changeChannel] = useState(false);
+  const [change] = useState(false);
 
   const carouselItems = [
     {

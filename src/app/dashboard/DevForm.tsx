@@ -3,7 +3,7 @@ type objType = {
     idk: number;
     meow: string;
 }
-const obj: objType = {}
+// const obj: objType = {}
 
 export default function DevhtmlForm() {
     // create action
