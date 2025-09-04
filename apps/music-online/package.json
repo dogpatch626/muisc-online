@@ -12,11 +12,13 @@
   },
   "private": true,
   "dependencies": {
+    
     "next": "^15.5.2",
     "react": "^19.1.0",
     "react-dom": "19.1.1"
   },
   "devDependencies": {
+    "@nx/next": "^21.4.1",
     "@cloudflare/next-on-pages": "^1.13.13",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
