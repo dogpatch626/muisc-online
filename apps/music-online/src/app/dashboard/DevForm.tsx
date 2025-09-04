@@ -1,8 +1,5 @@
 import React from 'react'
-type objType = {
-    idk: number;
-    meow: string;
-}
+
 // const obj: objType = {}
 
 export default function DevhtmlForm() {
