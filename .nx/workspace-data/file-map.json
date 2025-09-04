@@ -1,0 +1,210 @@
+{
+  "version": "6.0",
+  "nxVersion": "21.4.1",
+  "pathMappings": {},
+  "nxJsonPlugins": [
+    {
+      "name": "@nx/js/typescript",
+      "options": {
+        "typecheck": {
+          "targetName": "typecheck"
+        },
+        "build": {
+          "targetName": "build",
+          "configName": "tsconfig.lib.json",
+          "buildDepsName": "build-deps",
+          "watchDepsName": "watch-deps"
+        }
+      }
+    },
+    {
+      "name": "@nx/next/plugin",
+      "options": {
+        "startTargetName": "start",
+        "buildTargetName": "build",
+        "devTargetName": "dev",
+        "serveStaticTargetName": "serve-static",
+        "buildDepsTargetName": "build-deps",
+        "watchDepsTargetName": "watch-deps"
+      }
+    },
+    {
+      "name": "@nx/eslint/plugin",
+      "options": {
+        "targetName": "lint"
+      }
+    }
+  ],
+  "fileMap": {
+    "nonProjectFiles": [
+      {
+        "file": ".github/workflows/ci.yml",
+        "hash": "747817022128932451"
+      },
+      {
+        "file": "eslint.config.mjs",
+        "hash": "10770449096712831357"
+      },
+      {
+        "file": "package.json",
+        "hash": "16231686445777125161"
+      },
+      {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "14688272390704683536"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "17261171566694419087"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "17916001417971287321"
+      },
+      {
+        "file": "tsconfig.json",
+        "hash": "4706652787502839341"
+      },
+      {
+        "file": "README.md",
+        "hash": "11523945754455960695"
+      },
+      {
+        "file": "nx.json",
+        "hash": "7838823872953010797"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "18132073024976155609"
+      }
+    ],
+    "projectFileMap": {
+      "@online-music/music-online": [
+        {
+          "file": "apps/music-online/.swcrc",
+          "hash": "2742566327615098680"
+        },
+        {
+          "file": "apps/music-online/eslint.config.mjs",
+          "hash": "10818484782922660641",
+          "deps": [
+            "npm:@eslint/eslintrc",
+            "npm:@eslint/js",
+            "npm:@eslint/compat",
+            "npm:@nx/eslint-plugin"
+          ]
+        },
+        {
+          "file": "apps/music-online/index.d.ts",
+          "hash": "5498222895072842432"
+        },
+        {
+          "file": "apps/music-online/next-env.d.ts",
+          "hash": "1320675027584673186"
+        },
+        {
+          "file": "apps/music-online/next.config.ts",
+          "hash": "6946158472220958157",
+          "deps": [
+            "npm:@nx/next",
+            "npm:@cloudflare/next-on-pages"
+          ]
+        },
+        {
+          "file": "apps/music-online/package.json",
+          "hash": "9892305317046986165",
+          "deps": [
+            "npm:@eslint/eslintrc",
+            "npm:@types/node",
+            "npm:@types/react",
+            "npm:@types/react-dom",
+            "npm:eslint",
+            "npm:eslint-config-next",
+            "npm:tailwindcss",
+            "npm:typescript"
+          ]
+        },
+        {
+          "file": "apps/music-online/postcss.config.mjs",
+          "hash": "535692822154927684"
+        },
+        {
+          "file": "apps/music-online/public/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/music-online/public/favicon.ico",
+          "hash": "9303420814833116677"
+        },
+        {
+          "file": "apps/music-online/src/app/ActiveChannel.tsx",
+          "hash": "14407323058785573948",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/music-online/src/app/api/hello/route.ts",
+          "hash": "495073956729887886"
+        },
+        {
+          "file": "apps/music-online/src/app/dashboard/DevForm.tsx",
+          "hash": "5460717910999684342",
+          "deps": [
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/music-online/src/app/dashboard/dashboard.css",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "apps/music-online/src/app/dashboard/layout.tsx",
+          "hash": "1133360546021472874",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/music-online/src/app/dashboard/page.tsx",
+          "hash": "1818691412143738758"
+        },
+        {
+          "file": "apps/music-online/src/app/global.css",
+          "hash": "17616600193367462378"
+        },
+        {
+          "file": "apps/music-online/src/app/layout.tsx",
+          "hash": "3410446139597941415",
+          "deps": [
+            "npm:next"
+          ]
+        },
+        {
+          "file": "apps/music-online/src/app/page.tsx",
+          "hash": "4692764100966040296",
+          "deps": [
+            "npm:next",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "apps/music-online/tailwind.config.js",
+          "hash": "5937918000814531646"
+        },
+        {
+          "file": "apps/music-online/tsconfig.json",
+          "hash": "591105546826452759"
+        }
+      ]
+    }
+  }
+}

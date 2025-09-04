@@ -1,0 +1,240 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import "tailwindcss";
+
+
+@tailwind utilities;
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2a2a2a;
+  font-family: 'VT323', monospace;
+  color: #e0e0e0;
+}
+
+/* The main container for the whole TV set */
+.tv-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.devForm {
+  display: flex;
+  flex-direction: column;
+
+
+
+}
+
+
+/* The boxy body of the TV */
+.tv-body {
+  width: 90vw;
+  height: 90vh;
+  background: linear-gradient(to right, #855e42, #855e42, #855e42);
+  border: 15px solid #111;
+  border-radius: 30px;
+  box-shadow:
+    inset 0 0 25px #000,
+    0 10px 20px rgba(0, 0, 0, 0.7);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding: 20px;
+}
+
+/* Container for the screen to create an inner bezel */
+.tv-screen-container {
+  flex-grow: 1;
+  background-color: #000;
+  border-radius: 20px;
+  padding: 25px;
+  box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+
+  /* This is crucial for the screen effects */
+}
+
+/* The actual screen where content is displayed */
+.tv-screen {
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  border-radius: 15px;
+  /* Creates the curved screen effect */
+  position: relative;
+  box-shadow: 0 0 150px rgba(72, 168, 255, 0.2);
+  overflow: auto;
+}
+
+@media (max-width: 700px) {
+  body {
+    transform: rotate(90deg) !important;
+
+  }
+
+  .tv-body {
+    height: 90vw !important;
+    width: 90vh !important;
+  }
+
+  .embed {
+    width: 300px !important;
+  }
+
+}
+
+.tv-screen .content {
+  padding: 20px;
+  text-align: center;
+  color: #c8ffc8;
+
+  text-shadow: 0 0 5px #90ee90, 0 0 10px #90ee90;
+}
+
+.content {
+  height: 100%;
+
+}
+
+/* --- Screen Effects --- */
+
+/* Horizontal scan lines effect */
+.scan-lines {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0) 50%,
+      rgba(0, 0, 0, 0.2) 70%,
+      rgba(255, 255, 255, 0));
+  background-size: 100% 4px;
+  animation: scan 15s linear infinite;
+  pointer-events: none;
+
+}
+
+/* Screen flicker effect */
+.flicker {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  animation: flicker 0.15s infinite;
+  pointer-events: none;
+}
+
+/* --- TV Details --- */
+
+.tv-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px 5px;
+}
+
+.speaker-grille {
+  width: 120px;
+  height: 60px;
+  background-image:
+    radial-gradient(circle, #000 1px, transparent 1px);
+  background-size: 5px 5px;
+  background-color: #111;
+  border-radius: 5px;
+}
+
+.knob-container {
+  display: flex;
+}
+
+.knob {
+  width: 65px;
+  height: 35px;
+  transform: rotate(45deg);
+  border-radius: 100px / 50px;
+  background: linear-gradient(135deg, #555, black);
+  border: 2px solid #666;
+  border-radius: 50%;
+  margin-left: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+  position: relative;
+}
+
+.knob::after {
+  content: '';
+
+
+}
+
+.knob img {
+  transform: rotate(-45deg);
+  position: fixed;
+
+  right: 20px;
+  top: 5px;
+}
+
+
+
+
+.antenna-rod::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  background-color: #aaa;
+  border-radius: 50%;
+  position: absolute;
+  top: -5px;
+  left: -3px;
+}
+
+.tv-stand {
+  width: 250px;
+  height: 20px;
+  background-color: #111;
+  border-radius: 0 0 10px 10px;
+}
+
+
+/* --- Keyframe Animations --- */
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.8;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes scan {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 0 -200px;
+  }
+}
+
+.embed {
+  min-width: -webkit-fill-available;
+  min-height: 665px;
+  top: 20px;
+  position: relative;
+}

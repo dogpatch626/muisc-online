@@ -1,0 +1,78 @@
+"use client";
+import Image from "next/image";
+// App.jsx
+import React, { useState } from 'react';
+import ActiveChannel from './ActiveChannel';
+
+
+
+export default function Home() {
+  const [position, setPos] = useState(0);
+  const [change] = useState(false);
+
+  const carouselItems = [
+    {
+      id: 1, content: <iframe className="embed" key={'mike'} src="https://www.youtube.com/embed/0cDe2pK4SoU?si=Wj_zYXZ5qdB7rX-B" title="YouTube video player" frameBorder={'none'} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe>
+    },
+    { id: 2, content: <iframe className="embed" key={"dj"} src="https://www.youtube.com/embed/pfLKzdBxd98?si=FGZAhTytMZp8Ne-Z" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
+    { id: 3, content: <iframe className="embed" key={"sade"} src="https://www.youtube.com/embed/kcPc18SG6uA?si=jyhnBzDcvHUjYAKY" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
+    { id: 4, content: <iframe className="embed" src="https://www.youtube.com/embed/04mfKJWDSzI?si=6orlk7BtIn4rqutH" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe> },
+    { id: 5, content: <h2>Slide mow</h2> },
+    { id: 6, content: <h2>Slide 6</h2> },
+  ];
+
+  function moveLeft(): void {
+    // circular array 
+    setPos(((position - 1 % 6) + 6) % 6)
+
+  }
+  function moveRight(): void {
+    setPos(((position + 1 % 6) + 6) % 6)
+  }
+
+
+
+  return (
+
+
+    <div className="tv-container">
+      <div className="tv-body">
+
+        <div className="tv-screen-container">
+          <div className="tv-screen">
+            <div className="content ">
+              {change &&
+                <Image src={"https://media1.tenor.com/m/88dnH_mHRLAAAAAC/static-tv-static.gif"} alt="static" key={"static"} priority={true} width={25} height={25}>
+                </Image>}
+              {
+
+              } <ActiveChannel channel={carouselItems[position]} />
+            </div>
+            <div className="scan-lines"></div>
+            <div className="flicker"></div>
+          </div>
+        </div>
+
+        <div className="tv-controls">
+          <div className="speaker-grille"></div>
+          <div className="knob-container">
+            <button type="button" onClick={moveRight}>
+              <div className="knob">
+                <Image src={"/svg-left.svg"} width={25} height={25} alt="back-button"></Image>
+              </div>
+            </button>
+            <button type="button" onClick={moveLeft}>
+              <div className="knob">
+                <Image src={"/svg-left.svg"} priority={true} width={25} height={25} alt="back-button"></Image>
+              </div>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div className="tv-stand"></div>
+    </div >
+
+
+  );
+
+}

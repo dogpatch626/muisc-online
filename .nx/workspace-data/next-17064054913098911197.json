@@ -1,0 +1,1706 @@
+{
+  "9277960882025756358": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "7116866292358117047": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "17713881108922556432": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "11689826750519904579": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "9215601093215541078": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "12891571830316880804": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "6324753264401133521": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "5031909952550785385": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "13317658975333627384": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "8226157605137268": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "15458007192457273734": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "858387520955393628": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "10879446877050326597": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "2237180001492715890": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "16176653118779730877": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "11667361363177015059": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "834155282482191139": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "4789779660501735814": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "15890576645808698891": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "2412376397957179805": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "11022025333680303710": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "11245401339352546132": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "9362369874304625373": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  },
+  "15868588827712275200": {
+    "build": {
+      "command": "next build",
+      "options": {
+        "cwd": "apps/music-online",
+        "tty": false
+      },
+      "dependsOn": [
+        "^build"
+      ],
+      "cache": true,
+      "inputs": [
+        "default",
+        "^production",
+        {
+          "externalDependencies": [
+            "next"
+          ]
+        }
+      ],
+      "outputs": [
+        "{workspaceRoot}/apps/music-online/.next/!(cache)/**/*",
+        "{workspaceRoot}/apps/music-online/.next/!(cache)"
+      ],
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "dev": {
+      "continuous": true,
+      "command": "next dev",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "syncGenerators": [
+        "@nx/js:typescript-sync"
+      ]
+    },
+    "start": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "serve-static": {
+      "continuous": true,
+      "command": "next start",
+      "options": {
+        "cwd": "apps/music-online"
+      },
+      "dependsOn": [
+        "build"
+      ]
+    },
+    "build-deps": {
+      "dependsOn": [
+        "^build"
+      ]
+    },
+    "watch-deps": {
+      "continuous": true,
+      "dependsOn": [
+        "build-deps"
+      ],
+      "command": "npx nx watch --projects @online-music/music-online --includeDependentProjects -- npx nx build-deps @online-music/music-online"
+    }
+  }
+}

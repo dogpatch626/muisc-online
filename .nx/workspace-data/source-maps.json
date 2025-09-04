@@ -1,0 +1,320 @@
+{
+  "apps/music-online": {
+    "root": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.continuous": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.options": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.dependsOn": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.executor": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.options.cwd": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.serve-static.options.command": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps.continuous": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps.dependsOn": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps.executor": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps.options": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "targets.watch-deps.options.command": [
+      "apps/music-online/next.config.ts",
+      "@nx/next/plugin"
+    ],
+    "name": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "tags": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "tags.npm:private": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.0": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.1": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.2": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.3": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.4": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.5": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.targetGroups.NPM Scripts.6": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.packageName": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "metadata.js.isInPackageManagerWorkspaces": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.dev.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.build.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.start.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.lint.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.pages:build.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.preview.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.executor": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.options": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.metadata": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.options.script": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.metadata.scriptContent": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ],
+    "targets.deploy.metadata.runCommand": [
+      "apps/music-online/package.json",
+      "nx/core/package-json"
+    ]
+  }
+}

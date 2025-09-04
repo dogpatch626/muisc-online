@@ -1,0 +1,21 @@
+{
+  "run": {
+    "command": "nx run @online-music/music-online:start",
+    "startTime": "2025-09-03T22:46:58.836Z",
+    "endTime": "2025-09-03T22:47:01.138Z",
+    "inner": false
+  },
+  "tasks": [
+    {
+      "taskId": "@online-music/music-online:build",
+      "target": "build",
+      "projectName": "@online-music/music-online",
+      "hash": "5134434555433910492",
+      "startTime": "2025-09-03T22:46:58.960Z",
+      "endTime": "2025-09-03T22:47:01.127Z",
+      "params": "",
+      "cacheStatus": "cache-miss",
+      "status": 1
+    }
+  ]
+}
