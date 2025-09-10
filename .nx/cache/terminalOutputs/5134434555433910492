@@ -1,17 +1,0 @@
-> next build
-
-   [1m[38;2;173;127;168m▲ Next.js 15.2.5[39m[22m
-
- [37m[1m [22m[39m Creating an optimized production build ...
-NX: Next.js SVGR support is deprecated. If used with turbopack, it may not work as expected and is not recommended. Please configure SVGR manually.
-NX: Next.js SVGR support is deprecated. If used with turbopack, it may not work as expected and is not recommended. Please configure SVGR manually.
-NX: Next.js SVGR support is deprecated. If used with turbopack, it may not work as expected and is not recommended. Please configure SVGR manually.
-[31mFailed to compile.
-[39m
-./src/app/layout.tsx
-[31m[1mModule not found[22m[39m: Can't resolve '[32m./globals.css[39m'
-
-https://nextjs.org/docs/messages/module-not-found
-
-
-> Build failed because of webpack errors
