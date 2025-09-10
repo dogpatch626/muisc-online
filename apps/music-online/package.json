@@ -13,26 +13,24 @@
   },
   "private": true,
   "dependencies": {
-    
     "autoprefixer": "^10.4.13",
     "next": "^15.5.2",
     "react": "^19.1.0",
     "react-dom": "19.1.1",
     "vite": "^7.1.5"
-    
   },
   "devDependencies": {
-    "@opennextjs/cloudflare": "^1.8.2",
-    "wrangler": "^4.35.0",
     "@eslint/eslintrc": "^3",
     "@nx/next": "^21.4.1",
+    "@opennextjs/cloudflare": "^1.8.2",
     "@tailwindcss/postcss": "^4",
-    "@types/node": "^20",
+    "@types/node": "^20.19.9",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "eslint": "^9",
     "eslint-config-next": "15.4.6",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4.35.0"
   }
 }
