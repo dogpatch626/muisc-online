@@ -2,6 +2,9 @@
   "name": "@online-music/music-backend",
   "version": "0.0.1",
   "private": true,
+  "scripts": {
+    "dev": "nodemon ./dist/main.js"
+  },
   "nx": {
     "targets": {
       "build": {
@@ -93,6 +96,17 @@
           "production": {
             "buildTarget": "@online-music/music-backend:build:production"
           }
+        }
+      },
+      "dev":{
+        "continous": true,
+        "executor": "@nx/js:node",
+         "dependsOn": [
+          "build"
+        ],
+        "options": {
+          "buildTarget": "@online-music/music-backend:build",
+          "runBuildTargetDependencies": false
         }
       }
     }
