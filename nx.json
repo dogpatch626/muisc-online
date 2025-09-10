@@ -54,8 +54,8 @@
     
     "build": {
       "inputs": ["^default"],
-      "outputs": ["{workspaceRoot}/apps/{projectRoot}"],
-      "cache": true
+      "outputs": ["{workspaceRoot}/apps/{projectRoot}"]
+      
     }
 
   }
