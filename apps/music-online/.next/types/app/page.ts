@@ -1,4 +1,4 @@
-// File: /Users/danny/code/ms-online/online-music/apps/music-online/src/app/page.tsx
+// File: /Users/danny/code/ms-online/muisc-online/apps/music-online/src/app/page.tsx
 import * as entry from '../../../src/app/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "next:build": "next build",
     "start": "next start",
     "lint": "next lint",
     "pages:build": "npx @cloudflare/next-on-pages",
@@ -12,15 +12,17 @@
   },
   "private": true,
   "dependencies": {
-    
+    "autoprefixer": "^10.4.13",
     "next": "^15.5.2",
     "react": "^19.1.0",
-    "react-dom": "19.1.1"
+    "react-dom": "19.1.1",
+    "vite": "^7.1.5",
+    "wrangler": "^4.35.0"
   },
   "devDependencies": {
-    "@nx/next": "^21.4.1",
     "@cloudflare/next-on-pages": "^1.13.13",
     "@eslint/eslintrc": "^3",
+    "@nx/next": "^21.4.1",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",

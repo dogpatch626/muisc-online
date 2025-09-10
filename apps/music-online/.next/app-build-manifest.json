@@ -1,31 +1,42 @@
 {
   "pages": {
     "/_not-found/page": [
-      "static/chunks/[root of the server]__03e4c428._.css",
-      "static/chunks/node_modules_next_dist_1a6ee436._.js",
-      "static/chunks/apps_music-online_src_app_layout_tsx_85f306c7._.js",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c040f5c6._.js",
-      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
-      "static/chunks/node_modules_next_dist_client_fdf37019._.js",
-      "static/chunks/node_modules_next_dist_3bfaed20._.js",
-      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
-      "static/chunks/apps_music-online_e69f0d32._.js",
-      "static/chunks/apps_music-online_deb52305._.js"
+      "static/chunks/webpack-8844fc4c2f02939f.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-81427a9d7e14e1f8.js",
+      "static/chunks/main-app-06b3d83b169ef71c.js",
+      "static/chunks/app/_not-found/page-5a2e3047ebf5a19e.js"
+    ],
+    "/layout": [
+      "static/chunks/webpack-8844fc4c2f02939f.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-81427a9d7e14e1f8.js",
+      "static/chunks/main-app-06b3d83b169ef71c.js",
+      "static/css/a358c6de921db8dd.css",
+      "static/chunks/app/layout-082d36495d7f8fc7.js"
     ],
     "/page": [
-      "static/chunks/[root of the server]__03e4c428._.css",
-      "static/chunks/node_modules_next_dist_1a6ee436._.js",
-      "static/chunks/apps_music-online_src_app_layout_tsx_85f306c7._.js",
-      "static/chunks/node_modules_next_0766a282._.js",
-      "static/chunks/apps_music-online_src_app_a372b0b5._.js",
-      "static/chunks/apps_music-online_src_app_page_tsx_c2d67b48._.js",
-      "static/chunks/[turbopack]_browser_dev_hmr-client_hmr-client_ts_c040f5c6._.js",
-      "static/chunks/node_modules_next_dist_compiled_2ce9398a._.js",
-      "static/chunks/node_modules_next_dist_client_fdf37019._.js",
-      "static/chunks/node_modules_next_dist_3bfaed20._.js",
-      "static/chunks/ed0b0_@swc_helpers_cjs_d9e50ee1._.js",
-      "static/chunks/apps_music-online_e69f0d32._.js",
-      "static/chunks/apps_music-online_deb52305._.js"
+      "static/chunks/webpack-8844fc4c2f02939f.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-81427a9d7e14e1f8.js",
+      "static/chunks/main-app-06b3d83b169ef71c.js",
+      "static/chunks/239-e5a90e2a60ae59a5.js",
+      "static/chunks/app/page-e8bb495d2a861415.js"
+    ],
+    "/dashboard/layout": [
+      "static/chunks/webpack-8844fc4c2f02939f.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-81427a9d7e14e1f8.js",
+      "static/chunks/main-app-06b3d83b169ef71c.js",
+      "static/css/f30152c0704fba31.css",
+      "static/chunks/app/dashboard/layout-f649b8519b418e0f.js"
+    ],
+    "/dashboard/page": [
+      "static/chunks/webpack-8844fc4c2f02939f.js",
+      "static/chunks/4bd1b696-c023c6e3521b1417.js",
+      "static/chunks/255-81427a9d7e14e1f8.js",
+      "static/chunks/main-app-06b3d83b169ef71c.js",
+      "static/chunks/app/dashboard/page-c374cc87e548081b.js"
     ]
   }
 }

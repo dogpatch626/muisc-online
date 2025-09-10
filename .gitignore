@@ -4,7 +4,7 @@
 **/node_modules
 
 **/.nx
-
+tmp
 /.pnp
 .pnp.*
 .yarn/*
@@ -42,3 +42,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Next.js
+.next
+out

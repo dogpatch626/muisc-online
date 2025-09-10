@@ -50,5 +50,14 @@
         "linter": "eslint"
       }
     }
+  },
+  "targetDefaults": {
+    
+    "build": {
+      "inputs": ["^default"],
+      "outputs": ["{workspaceRoot}/apps/{projectRoot}"],
+      "cache": true
+    }
+
   }
 }
