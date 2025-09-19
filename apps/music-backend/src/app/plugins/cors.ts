@@ -8,6 +8,9 @@ export default fp(
       allowedHeaders: ['Origin', 'X-Requested-With', 'Accept', 'Content-Type'],
       hook: 'onRequest',
       origin: (origin, cb) => {
+        if (!origin) {
+          cb(new Error('Origin header missing or malformed.'), false);
+        }
         // const hostname = new URL(org).hostname;
         // if (hostname === 'localhost') {
         //   cb(null, true);
