@@ -1,19 +1,20 @@
-
-
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
-@import "tailwindcss";
-
+@import 'tailwindcss';
 
 @tailwind utilities;
 
 body {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   min-height: 100vh;
-  background-color: #2a2a2a;
+  background-color: #eeeeee;
   font-family: 'VT323', monospace;
-  color: #e0e0e0;
+  background: linear-gradient(#777777, transparent);
+  align-items: center;
+}
+.content-body {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
 }
 
 /* The main container for the whole TV set */
@@ -21,36 +22,48 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  min-width: 700px;
+  transform: scale(0.7);
 }
 
-.devForm {
+.main-container {
   display: flex;
-  flex-direction: column;
-
-
-
+  flex-direction: row;
+  height: 100vh;
 }
-
-
+@media screen and (width <= 1250px) {
+  .main-container {
+    flex-direction: column;
+    width: 100vw !important;
+  }
+  .content-body {
+    width: 100vw;
+  }
+  .carousel-container {
+    width: 100vw !important;
+    align-self: center;
+    flex-direction: column !important;
+  }
+}
+.carousel-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  align-self: center;
+}
 /* The boxy body of the TV */
 .tv-body {
-    border-radius: 25px;
-    flex-direction: column;
-    width: 90vw;
-    display: flex;
-    
-    box-shadow: inset 0 0 25px #000, 0 10px 20px rgba(0, 0, 0, .7);
-    transform: scale(.8);
+  border-radius: 15px;
+  box-shadow: inset 0 0 25px #000, 0 10px 20px rgba(0, 0, 0, 0.7);
 }
 
 /* Container for the screen to create an inner bezel */
 .tv-screen-container {
-  flex-grow: 1;
   background-color: #000;
-  border-radius: 20px;
-  padding: 25px;
+  border-radius: 10px;
+  padding: 5px;
   box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8);
-  position: relative;
 
   /* This is crucial for the screen effects */
 }
@@ -67,34 +80,15 @@ body {
   overflow: auto;
 }
 
-@media (max-width: 700px) {
-  body {
-    transform: rotate(90deg) !important;
-
-  }
-
-  .tv-body {
-    height: 90vw !important;
-    width: 90vh !important;
-  }
-
-  .embed {
-    width: 300px !important;
-  }
-
-}
-
 .tv-screen .content {
-  padding: 20px;
+  padding: 10px;
   text-align: center;
   color: #c8ffc8;
-
   text-shadow: 0 0 5px #90ee90, 0 0 10px #90ee90;
 }
 
 .content {
   height: 100%;
-
 }
 
 /* --- Screen Effects --- */
@@ -106,15 +100,16 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0),
-      rgba(255, 255, 255, 0) 50%,
-      rgba(0, 0, 0, 0.2) 70%,
-      rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0),
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.2) 70%,
+    rgba(255, 255, 255, 0)
+  );
   background-size: 100% 4px;
   animation: scan 15s linear infinite;
   pointer-events: none;
-
 }
 
 /* Screen flicker effect */
@@ -137,7 +132,6 @@ body {
   align-items: center;
   padding: 15px 25px 5px;
 }
-
 
 /* --- Keyframe Animations --- */
 
@@ -169,15 +163,18 @@ body {
   min-width: -webkit-fill-available;
   min-height: 665px;
   top: 20px;
- 
 }
 .player-actions:hover {
-  transform: translateY(20px);
-  color: yellow
+  box-shadow: 0 4px 8px 0;
 }
-button:hover svg {
-  color: yellow;
+
+.player-actions {
+  border: #000;
+  stroke: #777777;
+  stroke-width: 2px;
 }
-button:active  {
-  transform: translateY(20px)
+
+.player-actions svg {
+  width: 55px;
+  height: 65px;
 }
