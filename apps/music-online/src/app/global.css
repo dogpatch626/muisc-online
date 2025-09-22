@@ -3,10 +3,17 @@
 
 @tailwind utilities;
 
+@font-face {
+  font-family: 'PSO';
+  src: url('../../public/fonts/new-rodin-pro.otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   min-height: 100vh;
   background-color: #eeeeee;
-  font-family: 'VT323', monospace;
+  font-family: 'PSO', monospace;
   background: linear-gradient(#777777, transparent);
   align-items: center;
 }
@@ -16,7 +23,27 @@ body {
   align-items: center;
   align-self: center;
 }
+.carousel-table-item-active {
+  background: #171616;
+  background: linear-gradient(
+    90deg,
+    rgba(23, 22, 22, 0) 0%,
+    rgba(174, 228, 237, 0.71) 50%,
+    rgba(23, 22, 22, 0) 100%
+  );
+}
+.carousel-table-item-inactive {
+}
+.song-table {
+  width: 100%;
+  background-color: #777777;
+}
 
+td,
+th {
+  text-align: center;
+  padding: 8px;
+}
 /* The main container for the whole TV set */
 .tv-container {
   display: flex;
@@ -112,6 +139,10 @@ body {
   flex-flow: column wrap;
   justify-content: center;
   align-items: center;
+  border: #777777;
+  border-width: 4px;
+  border-style: solid;
+  margin: 10px 10px 10px 10px;
 }
 /* Screen flicker effect */
 .flicker {

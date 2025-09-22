@@ -139,7 +139,7 @@ export default function Home() {
         </div>
         {/* temporary for placements */}
       </div>
-      <div className="carousel-container w-4/12 h-12/12">
+      <div className="carousel-container w-4/12 h-12/12 flex flex-col justify-center">
         <Carousel songs={carouselItems} />
       </div>
     </div>
