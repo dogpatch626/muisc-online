@@ -22,7 +22,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  max-width: 1200px;
   min-width: 700px;
   transform: scale(0.7);
 }
@@ -38,7 +38,8 @@ body {
     width: 100vw !important;
   }
   .content-body {
-    width: 100vw;
+    width: 100vw !important;
+    flex-direction: column;
   }
   .carousel-container {
     width: 100vw !important;
@@ -46,12 +47,7 @@ body {
     flex-direction: column !important;
   }
 }
-.carousel-container {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  align-self: center;
-}
+
 /* The boxy body of the TV */
 .tv-body {
   border-radius: 15px;
@@ -111,7 +107,12 @@ body {
   animation: scan 15s linear infinite;
   pointer-events: none;
 }
-
+.carousel-item-container {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: center;
+  align-items: center;
+}
 /* Screen flicker effect */
 .flicker {
   position: absolute;

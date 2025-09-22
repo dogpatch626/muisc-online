@@ -110,7 +110,7 @@ export default function Home() {
 
   return (
     <div className="main-container w-12/12">
-      <div className="content-body w-7/12">
+      <div className="content-body w-8/12">
         <div className="tv-container w-12/12">
           <div className="tv-body w-12/12">
             <div className="tv-screen-container">
