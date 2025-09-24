@@ -1,22 +1,25 @@
 'use client';
-import { JSX, useState } from 'react';
+import { useState, useContext } from 'react';
 import CarouselItem from './CarouselItem';
+import { VideoContext } from '../page';
 
 type carouselProps = {
-  songs: { id: number; content: JSX.Element }[];
+  songs: { id: number; content: React.JSX.Element }[];
 };
 
 export default function Carousel({ songs }: carouselProps) {
   const [active, setActive] = useState(0);
+  const context = useContext(VideoContext);
   function dispatchSetActive(event: React.MouseEvent): void {
     const caughtClick = event.currentTarget.className.split('-')[1];
-
+    console.log(context);
     setActive(parseInt(caughtClick));
     event.preventDefault();
   }
+
   return (
     <div className="carousel-item-container">
-      <table className="song-table">
+      <table className="carousel-song-table">
         <thead>
           <tr>
             <th>Songs</th>

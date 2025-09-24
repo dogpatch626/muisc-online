@@ -1,14 +1,19 @@
 'use client';
 import Image from 'next/image';
 // App.jsx
-import React, { useState } from 'react';
+import { useState, createContext, useMemo, useCallback } from 'react';
 import ActiveChannel from './ActiveChannel';
 import PlayerControlComponents from './components/PlayerControlComponents';
 import Carousel from './components/Carousel';
+export const VideoContext = createContext({});
 
 export default function Home() {
   const [position, setPos] = useState(0);
   const [change] = useState(false);
+
+  const updatePosition = useCallback((index: number) => {
+    setPos(index);
+  }, []);
 
   const carouselItems = [
     {
@@ -99,7 +104,13 @@ export default function Home() {
       ),
     },
   ];
-
+  const contextValue = useMemo(
+    () => ({
+      position,
+      updatePosition,
+    }),
+    [position, updatePosition]
+  );
   function moveLeft(): void {
     // circular array
     setPos((position - (1 % 6) + 6) % 6);
@@ -109,14 +120,15 @@ export default function Home() {
   }
 
   return (
-    <div className="main-container w-12/12">
-      <div className="content-body w-8/12">
-        <div className="tv-container w-12/12">
-          <div className="tv-body w-12/12">
-            <div className="tv-screen-container">
-              <div className="tv-screen">
-                <div className="content ">
-                  {change && (
+    <VideoContext value={contextValue}>
+      <div className="main-container w-12/12">
+        <div className="content-body w-8/12">
+          <div className="tv-container w-12/12">
+            <div className="tv-body w-12/12">
+              <div className="tv-screen-container">
+                <div className="tv-screen">
+                  <div className="content ">
+                    {/* {change && (
                     <Image
                       src={
                         'https://media1.tenor.com/m/88dnH_mHRLAAAAAC/static-tv-static.gif'
@@ -127,21 +139,25 @@ export default function Home() {
                       width={25}
                       height={25}
                     ></Image>
-                  )}
-                  <ActiveChannel channel={carouselItems[position]} />
+                  )} */}
+                    <ActiveChannel channel={carouselItems[position]} />
+                  </div>
+                  <div className="scan-lines"></div>
+                  <div className="flicker"></div>
                 </div>
-                <div className="scan-lines"></div>
-                <div className="flicker"></div>
               </div>
             </div>
+            <PlayerControlComponents
+              moveLeft={moveLeft}
+              moveRight={moveRight}
+            />
           </div>
-          <PlayerControlComponents moveLeft={moveLeft} moveRight={moveRight} />
+          {/* temporary for placements */}
         </div>
-        {/* temporary for placements */}
+        <div className="carousel-container w-4/12 h-12/12 flex flex-col justify-center">
+          <Carousel songs={carouselItems} />
+        </div>
       </div>
-      <div className="carousel-container w-4/12 h-12/12 flex flex-col justify-center">
-        <Carousel songs={carouselItems} />
-      </div>
-    </div>
+    </VideoContext>
   );
 }

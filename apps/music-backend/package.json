@@ -98,7 +98,7 @@
           }
         }
       },
-      "dev":{
+      "start":{
         "continous": true,
         "executor": "@nx/js:node",
          "dependsOn": [

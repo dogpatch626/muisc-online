@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "build": "nx run-many -t build",
-    "next:dev": "nx dev music-online"
+    "next:dev": "nx dev music-online",
+    "back:dev": "nx start music-backend"
   },
   "private": true,
   "dependencies": {
