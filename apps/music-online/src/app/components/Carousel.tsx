@@ -12,7 +12,10 @@ export default function Carousel({ songs }: carouselProps) {
   const context = useContext(VideoContext);
   function dispatchSetActive(event: React.MouseEvent): void {
     const caughtClick = event.currentTarget.className.split('-')[1];
-    console.log(context);
+    // console.log(context);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    //@ts-expect-error
+    context.updatePosition(parseInt(caughtClick));
     setActive(parseInt(caughtClick));
     event.preventDefault();
   }

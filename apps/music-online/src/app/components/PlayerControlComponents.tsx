@@ -1,4 +1,6 @@
 import React from 'react';
+import ghost from '../../../public/ghost.gif';
+import Image from 'next/image';
 
 type PropTypes = {
   moveLeft: () => void;
@@ -10,8 +12,12 @@ export default function PlayerControlComponents({
   moveRight,
 }: PropTypes) {
   return (
-    <div className="flex flex-row ">
-      <button type="button" onClick={moveLeft} className="player-actions">
+    <div className="flex flex-row space-x-3" style={{ margin: '10px' }}>
+      <button
+        type="button"
+        onClick={moveLeft}
+        className="player-actions isolate rounded-sm bg-white/20 "
+      >
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -25,21 +31,11 @@ export default function PlayerControlComponents({
         </div>
       </button>
       {/* pause button */}
-      <button type="button" onClick={moveRight} className="player-actions">
-        <div>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            height="48"
-            width="48"
-            viewBox="0 0 48 48"
-            fill="currentColor"
-            className="player-actions"
-          >
-            <path d="M14 42V6h8v36Zm16 0V6h8v36Z" />
-          </svg>
-        </div>
-      </button>
-      <button type="button" className="player-actions" onClick={moveRight}>
+      <button
+        type="button"
+        className="player-actions isolate rounded-sm bg-white/20"
+        onClick={moveRight}
+      >
         <div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
