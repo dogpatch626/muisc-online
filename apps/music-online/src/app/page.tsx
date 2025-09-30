@@ -36,6 +36,21 @@ export default function Home() {
       artist: 'Gorillaz',
       src: 'https://www.youtube.com/embed/04mfKJWDSzI?si=6orlk7BtIn4rqutH?enablejsapi=1',
     },
+    {
+      id: 3,
+      artist: 'TOOL',
+      src: 'https://www.youtube-nocookie.com/embed/-_nQhGR0K8M?si=wmN_XVsbYnTWAIXm?enablejsapi=1',
+    },
+    {
+      id: 4,
+      artist: 'Crumb',
+      src: 'https://www.youtube-nocookie.com/embed/BqnG_Ei35JE?si=sa_tt6QOmJpfRBnH?enablejsapi=1',
+    },
+    {
+      id: 5,
+      artist: 'SADE',
+      src: 'https://www.youtube-nocookie.com/embed/U-SHfpm5Bxk?si=iI5eBo8XHuG-kpdt?enablejsapi=1',
+    },
   ];
   const contextValue = useMemo(
     () => ({
@@ -46,10 +61,10 @@ export default function Home() {
   );
   function moveLeft(): void {
     // circular array
-    setPos((position - (1 % 6) + 6) % 6);
+    setPos((position - (1 % 5) + 5) % 5);
   }
   function moveRight(): void {
-    setPos((position + (1 % 6) + 6) % 6);
+    setPos((position + (1 % 5) + 5) % 5);
   }
 
   return (
@@ -104,7 +119,7 @@ export default function Home() {
                 alt={''}
                 style={{
                   position: 'fixed',
-                  bottom: 0,
+                  bottom: 5,
                   width: '100px',
                   color: 'black',
                   justifySelf: 'center',
