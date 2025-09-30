@@ -1,6 +1,4 @@
 import React from 'react';
-import ghost from '../../../public/ghost.gif';
-import Image from 'next/image';
 
 type PropTypes = {
   moveLeft: () => void;
