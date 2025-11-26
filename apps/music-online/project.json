@@ -1,0 +1,32 @@
+{
+  "name": "@online-music/music-online",
+  "sourceRoot": "apps/music-online/src",
+  "projectType": "application",
+  "tags": ["type:app", "platform:cloudflare"],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "outputs": ["{projectRoot}/.open-next"],
+      "options": {
+        "command": "opennextjs-cloudflare build",
+        "cwd": "apps/music-online"
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "opennextjs-cloudflare deploy",
+        "cwd": "apps/music-online"
+      }
+    },
+    "preview": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "opennextjs-cloudflare preview",
+        "cwd": "apps/music-online"
+      }
+    }
+  }
+}

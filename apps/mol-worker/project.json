@@ -1,0 +1,35 @@
+{
+  "name": "mol-worker",
+  "sourceRoot": "apps/mol-worker/src",
+  "projectType": "application",
+  "tags": ["type:worker", "platform:cloudflare"],
+  "targets": {
+    "build": {
+      "executor": "@nx/esbuild:esbuild",
+      "outputs": ["{workspaceRoot}/dist/apps/mol-worker"],
+      "options": {
+        "outputPath": "dist/apps/mol-worker",
+        "main": "apps/mol-worker/src/index.ts",
+        "tsConfig": "apps/mol-worker/tsconfig.json",
+        "platform": "node",
+        "format": ["esm"],
+        "bundle": true,
+        "external": ["cloudflare:*"],
+        "esbuildOptions": {
+          "outExtension": {
+            ".js": ".mjs"
+          },
+          "conditions": ["worker", "browser"]
+        }
+      }
+    },
+    "deploy": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["build"],
+      "options": {
+        "command": "wrangler deploy --minify",
+        "cwd": "apps/mol-worker"
+      }
+    }
+  }
+}

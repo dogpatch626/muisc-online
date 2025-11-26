@@ -5,10 +5,52 @@
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": [
       "default",
+      "!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+      "!{projectRoot}/tsconfig.spec.json",
       "!{projectRoot}/.eslintrc.json",
-      "!{projectRoot}/eslint.config.mjs"
+      "!{projectRoot}/eslint.config.mjs",
+      "!{projectRoot}/**/*.md"
     ],
-    "sharedGlobals": ["{workspaceRoot}/.github/workflows/ci.yml"]
+    "sharedGlobals": [
+      "{workspaceRoot}/.github/workflows/ci.yml",
+      "{workspaceRoot}/nx.json",
+      "{workspaceRoot}/tsconfig.base.json"
+    ]
+  },
+  "targetDefaults": {
+    "build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "next:build": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    },
+    "lint": {
+      "cache": true,
+      "inputs": [
+        "default",
+        "{workspaceRoot}/eslint.config.mjs",
+        "{workspaceRoot}/.eslintrc.json"
+      ]
+    },
+    "typecheck": {
+      "cache": true,
+      "inputs": ["production", "^production"]
+    },
+    "dev": {
+      "cache": false
+    },
+    "deploy": {
+      "cache": false,
+      "dependsOn": ["build", "lint", "typecheck"]
+    },
+    "cf-typegen": {
+      "cache": true,
+      "inputs": ["{projectRoot}/wrangler.jsonc"]
+    }
   },
   "plugins": [
     {
@@ -16,12 +58,6 @@
       "options": {
         "typecheck": {
           "targetName": "typecheck"
-        },
-        "build": {
-          "targetName": "build",
-          "configName": "tsconfig.lib.json",
-          "buildDepsName": "build-deps",
-          "watchDepsName": "watch-deps"
         }
       }
     },
@@ -31,9 +67,7 @@
         "startTargetName": "start",
         "buildTargetName": "next:build",
         "devTargetName": "dev",
-        "serveStaticTargetName": "serve-static",
-        "buildDepsTargetName": "build-deps",
-        "watchDepsTargetName": "watch-deps"
+        "serveStaticTargetName": "serve-static"
       }
     },
     {
@@ -50,14 +84,5 @@
         "linter": "eslint"
       }
     }
-  },
-  "targetDefaults": {
-    
-    "build": {
-      "inputs": ["^default"],
-      "outputs": ["{workspaceRoot}/apps/{projectRoot}"]
-      
-    }
-
   }
 }

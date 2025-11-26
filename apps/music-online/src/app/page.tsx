@@ -19,7 +19,6 @@ export const IframeContext = createContext<Ref<HTMLIFrameElement> | undefined>(
 );
 export default function Home() {
   const [position, setPos] = useState(0);
-  const [change] = useState(false);
   const iframeRef = useRef<HTMLIFrameElement>(null);
   const updatePosition = useCallback((index: number) => {
     setPos(index);

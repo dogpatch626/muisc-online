@@ -207,6 +207,8 @@ td:hover {
 
 .embed {
   min-width: -webkit-fill-available;
+
+  min-width: -moz-available;
   min-height: 665px;
   top: 20px;
 }

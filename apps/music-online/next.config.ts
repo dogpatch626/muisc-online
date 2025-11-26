@@ -1,9 +1,9 @@
 //@ts-check
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-import { composePlugins, withNx }  from '@nx/next';
- 
-import { initOpenNextCloudflareForDev } from "@opennextjs/cloudflare";
+import { composePlugins, withNx } from '@nx/next';
+
+import { initOpenNextCloudflareForDev } from '@opennextjs/cloudflare';
 /**
  * @type {import('@nx/next/plugins/with-nx').WithNxOptions}
  **/
@@ -14,12 +14,11 @@ const nextConfig = {
 };
 
 if (process.env.NODE_ENV === 'development') {
-initOpenNextCloudflareForDev();
+  initOpenNextCloudflareForDev();
 }
 
 const plugins = [
   // Add more Next.js plugins to this list if needed.
   withNx,
 ];
-export const runtime = 'edge';
-export default  composePlugins(...plugins)(nextConfig);
+export default composePlugins(...plugins)(nextConfig);
