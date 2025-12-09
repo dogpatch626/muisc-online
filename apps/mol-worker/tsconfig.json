@@ -8,9 +8,17 @@
     "jsx": "react-jsx",
     "jsxImportSource": "hono/jsx",
     "outDir": "../../dist/apps/mol-worker",
-    "rootDir": "src",
-    "emitDeclarationOnly": false
+    "emitDeclarationOnly": false,
+    "baseUrl": "../..",
+    "paths": {
+      "@online-music/types": ["libs/shared/types/src/index.ts"]
+    }
   },
+  "references": [
+    {
+      "path": "../../libs/shared/types"
+    }
+  ],
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
 }

@@ -2,35 +2,37 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "mol-worker",
   "main": "src/index.ts",
-  "compatibility_date": "2025-11-25"
-  // "compatibility_flags": [
-  //   "nodejs_compat"
-  // ],
-  // "vars": {
-  //   "MY_VAR": "my-variable"
-  // },
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "MY_KV_NAMESPACE",
-  //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  //   }
-  // ],
+  "compatibility_date": "2025-11-18",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "vars": {
+    "ENVIRONMENT": "development"
+  },
+  // KV Namespaces - uncomment and add IDs after creating with: wrangler kv:namespace create CACHE
+  "kv_namespaces": [
+    {
+      "binding": "CACHE",
+      "id": "preview_id",
+      "preview_id": "preview_id"
+    }
+  ]
+  // R2 Buckets - uncomment after creating with: wrangler r2 bucket create uploads
   // "r2_buckets": [
   //   {
-  //     "binding": "MY_BUCKET",
-  //     "bucket_name": "my-bucket"
+  //     "binding": "UPLOADS",
+  //     "bucket_name": "music-online-uploads"
   //   }
   // ],
+  // D1 Database - uncomment after creating with: wrangler d1 create music-online-db
   // "d1_databases": [
   //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
+  //     "binding": "DB",
+  //     "database_name": "music-online-db",
   //     "database_id": ""
   //   }
   // ],
-  // "ai": {
-  //   "binding": "AI"
-  // },
+  // Observability
   // "observability": {
   //   "enabled": true,
   //   "head_sampling_rate": 1

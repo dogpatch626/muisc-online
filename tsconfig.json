@@ -1,16 +1,5 @@
 {
   "extends": "./tsconfig.base.json",
   "compileOnSave": false,
-  "files": [],
-  "references": [
-    {
-      "path": "./apps/music-online"
-    },
-    {
-      "path": "./apps/music-backend"
-    },
-    {
-      "path": "./libs/shared/types"
-    }
-  ]
+  "files": [], 
 }
