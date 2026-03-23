@@ -1,0 +1,208 @@
+/**
+ * Utility Classes
+ * Quick styling for common patterns
+ */
+
+@layer utilities {
+  /* Glow effects */
+  .glow-cyan {
+    box-shadow: var(--shadow-glow-cyan) !important;
+  }
+
+  .glow-magenta {
+    box-shadow: var(--shadow-glow-magenta) !important;
+  }
+
+  .glow-purple {
+    box-shadow: var(--shadow-glow-purple) !important;
+  }
+
+  .glow-pink {
+    box-shadow: var(--shadow-glow-pink) !important;
+  }
+
+  /* Blur backgrounds */
+  .blur-bg {
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+  }
+
+  .blur-bg-heavy {
+    backdrop-filter: blur(var(--blur-glass-heavy));
+    -webkit-backdrop-filter: blur(var(--blur-glass-heavy));
+  }
+
+  .blur-bg-subtle {
+    backdrop-filter: blur(var(--blur-glass-subtle));
+    -webkit-backdrop-filter: blur(var(--blur-glass-subtle));
+  }
+
+  /* Animations */
+  .animate-pulse-glow {
+    animation: glow-pulse var(--duration-slower) var(--ease-smooth) infinite;
+  }
+
+  .animate-float {
+    animation: float 3s var(--ease-smooth) infinite;
+  }
+
+  .animate-fade-in {
+    animation: fade-slide-in var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .animate-scale-pop {
+    animation: scale-pop var(--duration-normal) var(--ease-elastic);
+  }
+
+  /* Screen reader only */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+
+  /* Visually hidden but accessible */
+  .visually-hidden {
+    position: absolute !important;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+
+  /* Text utilities */
+  .text-gradient-cyan {
+    background: linear-gradient(135deg, var(--color-cyber-cyan), var(--color-laser-green));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-magenta {
+    background: linear-gradient(135deg, var(--color-neon-magenta), var(--color-plasma-pink));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* Glass surface utility */
+  .glass-surface {
+    background: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-base);
+    backdrop-filter: blur(var(--blur-glass));
+    -webkit-backdrop-filter: blur(var(--blur-glass));
+  }
+
+  /* Truncate text */
+  .truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Aspect ratios */
+  .aspect-video {
+    aspect-ratio: 16 / 9;
+  }
+
+  .aspect-square {
+    aspect-ratio: 1 / 1;
+  }
+
+  /* Loading shimmer */
+  .shimmer {
+    background: linear-gradient(
+      90deg,
+      var(--color-glass-surface) 0%,
+      var(--color-glass-surface-hover) 50%,
+      var(--color-glass-surface) 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s linear infinite;
+  }
+
+  /* Elevation utilities */
+  .elevation-0 {
+    box-shadow: none;
+  }
+
+  .elevation-1 {
+    box-shadow: var(--shadow-sm);
+  }
+
+  .elevation-2 {
+    box-shadow: var(--shadow-base);
+  }
+
+  .elevation-3 {
+    box-shadow: var(--shadow-md);
+  }
+
+  .elevation-4 {
+    box-shadow: var(--shadow-lg);
+  }
+
+  /* Interactive utilities */
+  .interactive {
+    cursor: pointer;
+    user-select: none;
+    transition: all var(--duration-fast) var(--ease-smooth);
+  }
+
+  .interactive:hover {
+    transform: translateY(-2px);
+  }
+
+  .interactive:active {
+    transform: translateY(0);
+  }
+
+  /* Flex utilities */
+  .flex-center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .flex-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Grid utilities */
+  .grid-auto-fit {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+
+  .grid-auto-fill {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: var(--space-6);
+  }
+}

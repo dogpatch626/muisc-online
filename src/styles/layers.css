@@ -1,0 +1,9 @@
+/**
+ * CSS Layers Definition
+ *
+ * Establishes the cascade order for the design system.
+ * Layers defined first have lowest priority, last have highest.
+ * This creates a predictable specificity hierarchy.
+ */
+
+@layer reset, tokens, base, layouts, components, utilities, overrides;

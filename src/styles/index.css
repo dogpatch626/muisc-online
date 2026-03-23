@@ -1,0 +1,36 @@
+/**
+ * Main Style Entry Point
+ * Techno Dreamscape Design System
+ *
+ * Imports all styles in the correct cascade order
+ * following the CSS layers architecture.
+ */
+
+/* Layer definitions (must come first) */
+@import './layers.css';
+
+/* Design tokens */
+@import './tokens/colors.css';
+@import './tokens/typography.css';
+@import './tokens/spacing.css';
+@import './tokens/effects.css';
+@import './tokens/animation.css';
+
+/* Base styles */
+@import './base/reset.css';
+@import './base/globals.css';
+
+/* Layout systems */
+@import './layouts/xmb-grid.css';
+@import './layouts/page-shell.css';
+
+/* Component styles */
+@import './components/glass-panel.css';
+@import './components/glass-button.css';
+@import './components/glass-card.css';
+@import './components/glass-nav.css';
+@import './components/glass-input.css';
+@import './components/glass-modal.css';
+
+/* Utility classes */
+@import './utilities/utilities.css';

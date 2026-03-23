@@ -1,0 +1,95 @@
+/**
+ * Glass Panel Component
+ * The foundational glassmorphic container
+ */
+
+@layer components {
+  .glass-panel {
+    background: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-depth);
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Backdrop filter with fallback */
+  @supports (backdrop-filter: blur(1px)) or (-webkit-backdrop-filter: blur(1px)) {
+    .glass-panel {
+      backdrop-filter: blur(var(--blur-glass));
+      -webkit-backdrop-filter: blur(var(--blur-glass));
+    }
+  }
+
+  @supports not (backdrop-filter: blur(1px)) and not (-webkit-backdrop-filter: blur(1px)) {
+    .glass-panel {
+      background: var(--color-nebula);
+    }
+  }
+
+  /* Variants */
+  .glass-panel--elevated {
+    background: var(--color-glass-surface-hover);
+    border-color: var(--color-glass-border-hover);
+    box-shadow: var(--shadow-glass-elevated);
+  }
+
+  .glass-panel--bordered {
+    border-width: 2px;
+  }
+
+  .glass-panel--heavy-blur {
+    backdrop-filter: blur(var(--blur-glass-heavy));
+    -webkit-backdrop-filter: blur(var(--blur-glass-heavy));
+  }
+
+  .glass-panel--subtle-blur {
+    backdrop-filter: blur(var(--blur-glass-subtle));
+    -webkit-backdrop-filter: blur(var(--blur-glass-subtle));
+  }
+
+  /* Glow variants */
+  .glass-panel--glow-cyan {
+    box-shadow: var(--shadow-glass-glow-cyan);
+  }
+
+  .glass-panel--glow-magenta {
+    box-shadow: var(--shadow-glass-glow-magenta);
+  }
+
+  /* Padding variants */
+  .glass-panel--p-sm {
+    padding: var(--space-3);
+  }
+
+  .glass-panel--p-md {
+    padding: var(--space-6);
+  }
+
+  .glass-panel--p-lg {
+    padding: var(--space-8);
+  }
+
+  /* Interactive states */
+  .glass-panel--interactive {
+    cursor: pointer;
+    transition: all var(--duration-normal) var(--ease-out-expo);
+  }
+
+  .glass-panel--interactive:hover {
+    background: var(--color-glass-surface-hover);
+    border-color: var(--color-glass-border-hover);
+    transform: translateY(-2px);
+  }
+
+  .glass-panel--interactive:active {
+    transform: translateY(0);
+    transition-duration: var(--duration-fast);
+  }
+
+  /* Focus state */
+  .glass-panel:focus-visible {
+    outline: 2px solid var(--color-cyber-cyan);
+    outline-offset: 2px;
+  }
+}

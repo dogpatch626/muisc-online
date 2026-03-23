@@ -1,0 +1,145 @@
+/**
+ * Glass Card Component
+ * Video card with thumbnail, overlay, and content
+ */
+
+@layer components {
+  .glass-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: all var(--duration-normal) var(--ease-out-expo);
+    cursor: pointer;
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    .glass-card {
+      backdrop-filter: blur(var(--blur-glass));
+      -webkit-backdrop-filter: blur(var(--blur-glass));
+    }
+  }
+
+  /* Hover effect */
+  .glass-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-glass-border-hover);
+    box-shadow: var(--shadow-xl);
+  }
+
+  .glass-card:hover .glass-card__thumbnail::after {
+    opacity: 0.3;
+  }
+
+  .glass-card:hover .glass-card__thumbnail img {
+    transform: scale(1.05);
+  }
+
+  /* Focus state */
+  .glass-card:focus-visible {
+    outline: 2px solid var(--color-cyber-cyan);
+    outline-offset: 2px;
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  /* Thumbnail */
+  .glass-card__thumbnail {
+    position: relative;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: var(--color-midnight);
+  }
+
+  .glass-card__thumbnail::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.6) 0%,
+      transparent 50%
+    );
+    opacity: 0.5;
+    transition: opacity var(--duration-normal) var(--ease-smooth);
+  }
+
+  .glass-card__thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--duration-slow) var(--ease-out-expo);
+  }
+
+  /* Duration badge */
+  .glass-card__duration {
+    position: absolute;
+    bottom: var(--space-2);
+    right: var(--space-2);
+    padding: var(--space-1) var(--space-2);
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: var(--radius-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    z-index: 1;
+  }
+
+  /* Content area */
+  .glass-card__content {
+    padding: var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .glass-card__title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-primary);
+    line-height: var(--line-height-tight);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+
+  .glass-card__artist {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+  }
+
+  .glass-card__meta {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+    margin-top: auto;
+  }
+
+  /* Compact variant */
+  .glass-card--compact {
+    flex-direction: row;
+  }
+
+  .glass-card--compact .glass-card__thumbnail {
+    width: 160px;
+    aspect-ratio: 16 / 9;
+    flex-shrink: 0;
+  }
+
+  .glass-card--compact .glass-card__content {
+    flex: 1;
+  }
+
+  /* Featured variant */
+  .glass-card--featured {
+    border-width: 2px;
+  }
+
+  .glass-card--featured:hover {
+    box-shadow: var(--shadow-glow-cyan);
+  }
+}

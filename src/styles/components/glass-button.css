@@ -1,0 +1,144 @@
+/**
+ * Glass Button Component
+ * Interactive buttons with glow effects
+ */
+
+@layer components {
+  .glass-button {
+    /* Base styles */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+
+    /* Typography */
+    font-size: var(--font-size-base);
+    font-weight: var(--font-weight-medium);
+    letter-spacing: var(--letter-spacing-wide);
+    text-transform: uppercase;
+
+    /* Spacing */
+    padding: var(--space-3) var(--space-6);
+
+    /* Glass effect */
+    background: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-base);
+
+    /* Interaction */
+    cursor: pointer;
+    user-select: none;
+
+    /* Transitions */
+    transition: all var(--duration-normal) var(--ease-out-expo);
+
+    /* States */
+    position: relative;
+    overflow: hidden;
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    .glass-button {
+      backdrop-filter: blur(var(--blur-glass-subtle));
+      -webkit-backdrop-filter: blur(var(--blur-glass-subtle));
+    }
+  }
+
+  /* Hover state */
+  .glass-button:hover {
+    background: var(--color-glass-surface-hover);
+    border-color: var(--color-glass-border-hover);
+    transform: translateY(-2px);
+  }
+
+  /* Active state */
+  .glass-button:active {
+    transform: translateY(0);
+    transition-duration: var(--duration-fast);
+  }
+
+  /* Focus state */
+  .glass-button:focus-visible {
+    outline: 2px solid var(--color-cyber-cyan);
+    outline-offset: 2px;
+  }
+
+  /* Disabled state */
+  .glass-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+  }
+
+  /* Size variants */
+  .glass-button--sm {
+    font-size: var(--font-size-sm);
+    padding: var(--space-2) var(--space-4);
+  }
+
+  .glass-button--lg {
+    font-size: var(--font-size-lg);
+    padding: var(--space-4) var(--space-8);
+  }
+
+  /* Primary variant - Cyan glow */
+  .glass-button--primary {
+    background: var(--color-cyber-cyan);
+    background: linear-gradient(
+      135deg,
+      rgba(0, 245, 255, 0.2),
+      rgba(0, 245, 255, 0.05)
+    );
+    border-color: var(--color-cyber-cyan);
+    color: var(--color-text-primary);
+  }
+
+  .glass-button--primary:hover {
+    box-shadow: var(--shadow-glow-cyan);
+    border-color: var(--color-cyber-cyan);
+  }
+
+  /* Secondary variant - Magenta glow */
+  .glass-button--secondary {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 0, 255, 0.2),
+      rgba(255, 0, 255, 0.05)
+    );
+    border-color: var(--color-neon-magenta);
+    color: var(--color-text-primary);
+  }
+
+  .glass-button--secondary:hover {
+    box-shadow: var(--shadow-glow-magenta);
+    border-color: var(--color-neon-magenta);
+  }
+
+  /* Ghost variant - Minimal */
+  .glass-button--ghost {
+    background: transparent;
+    border-color: transparent;
+  }
+
+  .glass-button--ghost:hover {
+    background: var(--color-glass-surface);
+    border-color: var(--color-glass-border);
+  }
+
+  /* Loading state */
+  .glass-button--loading {
+    pointer-events: none;
+    position: relative;
+  }
+
+  .glass-button--loading::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--color-glass-border);
+    border-top-color: var(--color-cyber-cyan);
+    border-radius: 50%;
+    animation: rotate var(--duration-slow) linear infinite;
+  }
+}

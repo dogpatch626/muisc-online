@@ -1,0 +1,192 @@
+/**
+ * Page Shell Layout
+ * Main page structure (header, main, footer)
+ */
+
+@layer layouts {
+  /* Page container */
+  .page-shell {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    position: relative;
+  }
+
+  /* Header */
+  .page-shell__header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: var(--color-glass-surface);
+    border-bottom: 1px solid var(--color-glass-border);
+
+    padding: var(--space-4) var(--space-6);
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    .page-shell__header {
+      backdrop-filter: blur(var(--blur-glass-heavy));
+      -webkit-backdrop-filter: blur(var(--blur-glass-heavy));
+    }
+  }
+
+  .page-shell__header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-6);
+  }
+
+  /* Logo/Brand */
+  .page-shell__brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: all var(--duration-fast) var(--ease-smooth);
+  }
+
+  .page-shell__brand:hover {
+    color: var(--color-cyber-cyan);
+    text-shadow: var(--shadow-glow-cyan);
+  }
+
+  .page-shell__brand img,
+  .page-shell__brand svg {
+    width: 40px;
+    height: 40px;
+  }
+
+  /* Navigation */
+  .page-shell__nav {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+  }
+
+  /* Main content area */
+  .page-shell__main {
+    flex: 1;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: var(--space-8) var(--space-6);
+  }
+
+  /* Content width variants */
+  .page-shell__main--narrow {
+    max-width: 800px;
+  }
+
+  .page-shell__main--wide {
+    max-width: 1600px;
+  }
+
+  .page-shell__main--full {
+    max-width: none;
+    padding: 0;
+  }
+
+  /* Footer */
+  .page-shell__footer {
+    margin-top: auto;
+    background: var(--color-glass-surface);
+    border-top: 1px solid var(--color-glass-border);
+    padding: var(--space-8) var(--space-6);
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    .page-shell__footer {
+      backdrop-filter: blur(var(--blur-glass));
+      -webkit-backdrop-filter: blur(var(--blur-glass));
+    }
+  }
+
+  .page-shell__footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-6);
+  }
+
+  .page-shell__footer-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+  }
+
+  .page-shell__footer-section {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .page-shell__footer-title {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: var(--letter-spacing-wider);
+    text-transform: uppercase;
+    color: var(--color-text-primary);
+    margin-bottom: var(--space-3);
+  }
+
+  .page-shell__footer-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+
+  .page-shell__footer-link {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color var(--duration-fast) var(--ease-smooth);
+  }
+
+  .page-shell__footer-link:hover {
+    color: var(--color-cyber-cyan);
+  }
+
+  .page-shell__footer-bottom {
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-glass-border);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--space-4);
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+  }
+
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .page-shell__header-content {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .page-shell__main {
+      padding: var(--space-6) var(--space-4);
+    }
+
+    .page-shell__footer-content {
+      gap: var(--space-4);
+    }
+
+    .page-shell__footer-links {
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .page-shell__footer-bottom {
+      flex-direction: column;
+      text-align: center;
+    }
+  }
+}

@@ -1,0 +1,48 @@
+/**
+ * Effects Tokens
+ * Blur, shadows, and glow effects for glassmorphism
+ */
+
+@layer tokens {
+  :root {
+    /* Blur Effects */
+    --blur-glass: 12px;
+    --blur-glass-heavy: 24px;
+    --blur-glass-subtle: 8px;
+
+    /* Shadow Effects */
+    --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.3);
+    --shadow-base: 0 2px 4px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.4);
+    --shadow-xl: 0 12px 24px rgba(0, 0, 0, 0.4);
+    --shadow-2xl: 0 24px 48px rgba(0, 0, 0, 0.5);
+
+    /* Depth Shadow for Glass */
+    --shadow-depth: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+    /* Glow Effects */
+    --shadow-glow-cyan: 0 0 20px rgba(0, 245, 255, 0.5);
+    --shadow-glow-cyan-lg: 0 0 40px rgba(0, 245, 255, 0.6);
+    --shadow-glow-magenta: 0 0 20px rgba(255, 0, 255, 0.5);
+    --shadow-glow-magenta-lg: 0 0 40px rgba(255, 0, 255, 0.6);
+    --shadow-glow-purple: 0 0 20px rgba(139, 92, 246, 0.5);
+    --shadow-glow-pink: 0 0 20px rgba(244, 114, 182, 0.5);
+
+    /* Inner Glow */
+    --shadow-inner-glow: inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+    /* Combined Effects */
+    --shadow-glass-elevated:
+      var(--shadow-depth),
+      var(--shadow-inner-glow);
+
+    --shadow-glass-glow-cyan:
+      var(--shadow-depth),
+      var(--shadow-glow-cyan);
+
+    --shadow-glass-glow-magenta:
+      var(--shadow-depth),
+      var(--shadow-glow-magenta);
+  }
+}

@@ -1,0 +1,137 @@
+/**
+ * Glass Input Component
+ * Form inputs matching the glass aesthetic
+ */
+
+@layer components {
+  .glass-input {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    padding: var(--space-3) var(--space-4);
+
+    /* Glass effect */
+    background: var(--color-glass-surface);
+    border: 1px solid var(--color-glass-border);
+    border-radius: var(--radius-base);
+
+    /* Typography */
+    font-size: var(--font-size-base);
+    color: var(--color-text-primary);
+
+    /* Transitions */
+    transition: all var(--duration-normal) var(--ease-smooth);
+  }
+
+  @supports (backdrop-filter: blur(1px)) {
+    .glass-input {
+      backdrop-filter: blur(var(--blur-glass-subtle));
+      -webkit-backdrop-filter: blur(var(--blur-glass-subtle));
+    }
+  }
+
+  /* Focus state */
+  .glass-input:focus-within {
+    background: var(--color-glass-surface-hover);
+    border-color: var(--color-cyber-cyan);
+    box-shadow: var(--shadow-glow-cyan);
+  }
+
+  /* Hover state */
+  .glass-input:hover:not(:focus-within) {
+    border-color: var(--color-glass-border-hover);
+  }
+
+  /* Disabled state */
+  .glass-input:has(input:disabled) {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  /* Icon */
+  .glass-input__icon {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+  }
+
+  .glass-input:focus-within .glass-input__icon {
+    opacity: 1;
+    color: var(--color-cyber-cyan);
+  }
+
+  /* Input field */
+  .glass-input__field {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: inherit;
+    font-size: inherit;
+    font-family: inherit;
+    padding: 0;
+  }
+
+  .glass-input__field::placeholder {
+    color: var(--color-text-muted);
+  }
+
+  /* Size variants */
+  .glass-input--sm {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-sm);
+  }
+
+  .glass-input--lg {
+    padding: var(--space-4) var(--space-6);
+    font-size: var(--font-size-lg);
+  }
+
+  /* Error state */
+  .glass-input--error {
+    border-color: var(--color-error);
+  }
+
+  .glass-input--error:focus-within {
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.5);
+  }
+
+  /* Success state */
+  .glass-input--success {
+    border-color: var(--color-success);
+  }
+
+  /* Textarea variant */
+  .glass-input--textarea {
+    align-items: flex-start;
+    padding: var(--space-4);
+  }
+
+  .glass-input--textarea .glass-input__field {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  /* Search variant with clear button */
+  .glass-input--search {
+    position: relative;
+  }
+
+  .glass-input__clear {
+    width: 20px;
+    height: 20px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity var(--duration-fast) var(--ease-smooth);
+  }
+
+  .glass-input__clear:hover {
+    opacity: 1;
+  }
+}
