@@ -1,0 +1,65 @@
+.watch-mode {
+  position: relative;
+  z-index: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+}
+
+.watch-viewport {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.watch-card {
+  width: 95%;
+  max-width: 1200px;
+  aspect-ratio: 16 / 9;
+  background: var(--surface-watch);
+  border: 1px solid var(--surface-card-border);
+  border-radius: var(--radius);
+  position: relative;
+  box-shadow: 0 12px 48px var(--surface-card-shadow);
+  overflow: hidden;
+}
+
+.watch-card iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: calc(var(--radius) - 1px);
+}
+
+.watch-accent-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--surface-accent-track);
+  border-radius: 0 0 var(--radius) var(--radius);
+  overflow: hidden;
+  z-index: 5;
+}
+
+.watch-accent-fill {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent) 0%, var(--accent-dim) 100%);
+}
+
+.watch-hint {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+  font-family: var(--font-main);
+  flex-shrink: 0;
+}

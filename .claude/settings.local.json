@@ -1,11 +1,29 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch"
+      "WebSearch",
+      "Bash(npx shadcn@latest init:*)",
+      "Bash(pnpx shadcn@latest init:*)",
+      "Bash(pnpm add:*)",
+      "Bash(npx shadcn@latest add:*)",
+      "Bash(npm run dev:*)",
+      "Bash(lsof:*)",
+      "Bash(npx tsc:*)",
+      "Bash(ls:*)",
+      "Bash(curl:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm run lint)",
+      "Bash(npm run preview:*)",
+      "Bash(/Users/danny/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/start-server.sh --project-dir /Users/danny/code/ms-online/muisc-online 2>&1)",
+      "Bash(/Users/danny/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.5/skills/brainstorming/scripts/stop-server.sh /Users/danny/code/ms-online/muisc-online/.superpowers/brainstorm/58152-1774278339 2>&1)",
+      "Bash(cat dist/assets/*.css)",
+      "WebFetch(domain:twistedwonderland.substack.com)",
+      "Bash(open:*)",
+      "Bash(pnpm build:*)"
     ]
   },
+  "enableAllProjectMcpServers": true,
   "enabledMcpjsonServers": [
     "filesystem"
-  ],
-  "enableAllProjectMcpServers": true
+  ]
 }

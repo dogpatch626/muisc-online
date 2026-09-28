@@ -4,95 +4,74 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A React 19 + TypeScript + Vite single-page application using the modern Vite template.
+A music video browser SPA with a PS2/ambient-inspired UI. Users browse a video carousel, then enter a fullscreen watch mode for playback. Built with React 19 + TypeScript + Vite, deployed to Cloudflare Pages.
 
-**Note**: The directory name is `muisc-online` (contains a typo).
+**Note**: The directory name is `muisc-online` (typo). The package name is `music-online`.
 
 ## Development Commands
 
 ```bash
-# Development server with HMR
-npm run dev
+pnpm dev          # Dev server with HMR
+pnpm build        # Type-check then build (tsc -b && vite build)
+pnpm lint         # ESLint
+pnpm preview      # Preview production build
 
-# Production build
-npm run build
-
-# Preview production build locally
-npm run preview
-
-# Run linter
-npm run lint
-
-# Cloudflare deployment (using Wrangler)
-npx wrangler pages deploy dist
-
-# Cloudflare local development
-npx wrangler pages dev dist
+# Cloudflare
+npx wrangler pages deploy dist    # Deploy to Cloudflare Pages
 ```
+
+## Architecture
+
+### Two-mode UI (App.tsx)
+
+The app switches between two modes via `useState<'browse' | 'watch'>`:
+
+- **Browse mode**: `Header` + `CardStage` (3-card carousel) + `InfoStrip` (title/artist/pagination dots)
+- **Watch mode**: `WatchMode` wraps an iframe player with `WatchHUD` (auto-hiding overlay) and `TargetingBrackets` (corner decorations)
+
+Keyboard navigation: Arrow keys cycle cards, Enter/Space enters watch mode, Escape exits.
+
+### Component hierarchy
+
+```
+App
+├── AmbientBackground        # Fixed background (gradient + grid + floating orbs)
+├── Browse mode:
+│   ├── Header               # Title + filter buttons + ThemeToggle
+│   ├── CardStage             # Carousel container
+│   │   ├── GhostCard (prev)  # Dimmed adjacent card
+│   │   ├── ActiveCard        # Focused card with play icon + TargetingBrackets
+│   │   └── GhostCard (next)
+│   └── InfoStrip             # Title, artist, pagination dots, counter
+└── Watch mode:
+    └── WatchMode             # Fullscreen iframe player
+        ├── Header (dimmed)
+        ├── TargetingBrackets
+        └── WatchHUD          # Auto-hiding title/artist overlay (3s timeout)
+```
+
+### Theming
+
+Dark/light theme via CSS custom properties. Theme state in `App.tsx`, persisted to `localStorage`, applied as `data-theme` attribute on `<html>`. Design tokens defined in `src/styles/tokens.css` (colors, typography, spacing, timing). Light theme overrides via `[data-theme='light']` selector.
+
+### Styling approach
+
+- **CSS custom properties** in `src/styles/tokens.css` for design tokens
+- **Component-scoped CSS files** colocated with each component (e.g., `CardStage.css`)
+- **Tailwind CSS 3** available (PostCSS + autoprefixer) but minimally used; most styling is hand-written CSS
+- **`@/` path alias** maps to `./src/` (configured in both `vite.config.ts` and `tsconfig.json`)
+
+### Data
+
+Video data is hardcoded in `App.tsx` as a `Video[]` array. The `Video` type is defined in `src/types/video.ts` (id, title, artist, thumbnail, url).
 
 ## Tech Stack
 
-- **React 19.2.0** with React DOM 19
-- **TypeScript 5.9.3** in strict mode
-- **Vite 7.2.4** as build tool and dev server
-- **Cloudflare Pages** deployment via `@cloudflare/vite-plugin` 1.21.2
-- **Wrangler 4.60.0** for Cloudflare development and deployment
-- **ESLint 9** with flat config format
-
-## TypeScript Configuration
-
-- **Strict mode enabled** with additional checks:
-  - `noUnusedLocals`: true
-  - `noUnusedParameters`: true
-  - `noFallthroughCasesInSwitch`: true
-  - `noUncheckedSideEffectImports`: true
-- **Module resolution**: `bundler` mode (supports modern import patterns)
-- **JSX**: `react-jsx` (automatic runtime)
-- **Target**: ES2022
-- **Build info**: Cached in `./node_modules/.tmp/tsconfig.app.tsbuildinfo`
-
-## ESLint Configuration
-
-Uses flat config format (`eslint.config.js`) with:
-- `@eslint/js` recommended rules
-- `typescript-eslint` recommended rules
-- `eslint-plugin-react-hooks` flat config recommended rules
-- `eslint-plugin-react-refresh` for Vite integration
-- Ignores `dist/` directory
-
-## Project Structure
-
-```
-src/
-  ├── App.tsx          # Main application component
-  ├── App.css          # App-specific styles
-  ├── main.tsx         # Application entry point
-  ├── index.css        # Global styles
-  └── assets/          # Static assets (images, etc.)
-```
-
-## Build System
-
-- **Dev Server**: Vite with Fast Refresh (HMR)
-- **Build Output**: `dist/` directory (git-ignored)
-- **Vite Plugins**:
-  - `@vitejs/plugin-react` with Babel for Fast Refresh
-  - `@cloudflare/vite-plugin` for Cloudflare Pages integration
-- **Entry Point**: `index.html` at project root
-
-## Cloudflare Configuration
-
-The project is configured for deployment to Cloudflare Pages:
-
-- **Wrangler Config**: `wrangler.jsonc` at project root
-- **Project Name**: `cloudflare-vite-tutorial`
-- **Compatibility Date**: 2025-04-03
-- **Asset Handling**: Single-page application mode (SPA routing enabled)
-- **Not Found Handling**: Configured for SPA to support client-side routing
-
-## Development Notes
-
-- React runs in `StrictMode` by default
-- HMR is configured via `@vitejs/plugin-react`
-- Type checking happens separately from build (`tsc -b` before `vite build`)
-- No test runner configured (add Vitest if needed)
+- **React 19** with automatic JSX runtime
+- **TypeScript** in strict mode (`noUnusedLocals`, `noUnusedParameters`, `erasableSyntaxOnly`)
+- **Vite** with `@vitejs/plugin-react` (Babel) + `@cloudflare/vite-plugin`
+- **Tailwind CSS 3** with PostCSS + autoprefixer
+- **ESLint 9** flat config (`eslint.config.js`) with typescript-eslint, react-hooks, react-refresh
+- **Cloudflare Pages** deployment (SPA mode, `wrangler.jsonc`)
+- **pnpm** as package manager
+- No test runner configured

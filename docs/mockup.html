@@ -1,0 +1,1517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MOL — Dreamspace Mockup</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Mono:wght@400;700&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #f0f0f0;
+    color: #333;
+    font-family: 'Inter', sans-serif;
+    padding: 60px 40px;
+  }
+
+  .mockup-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 400;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+  }
+
+  .artboard {
+    border: 1px solid rgba(0,0,0,0.06);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 100px;
+  }
+
+  /* ═══════════════════════════════════════════
+     THE VOID — deep space environment
+     ═══════════════════════════════════════════ */
+  .frame {
+    position: relative;
+    overflow: hidden;
+    background:
+      radial-gradient(ellipse at 50% 30%, rgba(240, 248, 255, 0.6) 0%, transparent 60%),
+      radial-gradient(ellipse at 30% 60%, rgba(230, 242, 255, 0.4) 0%, transparent 50%),
+      linear-gradient(180deg, #ffffff 0%, #f4f7fa 40%, #e8edf2 70%, #dde3ea 100%);
+  }
+
+  /* Star field — layered for depth (small=distant, large=near) */
+  .stars {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    display: none; /* hidden on light theme */
+  }
+  .stars-far {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 15%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1px 1px at 25% 42%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 47% 8%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 62% 55%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 78% 22%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 88% 68%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 5% 72%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 35% 88%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 55% 35%, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 92% 90%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 18% 95%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 72% 80%, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 42% 62%, rgba(255,255,255,0.15), transparent),
+      radial-gradient(1px 1px at 83% 45%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 3% 38%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 58% 92%, rgba(255,255,255,0.2), transparent);
+    animation: stars-twinkle 8s ease-in-out infinite alternate;
+  }
+  .stars-mid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1.5px 1.5px at 15% 28%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 38% 72%, rgba(255,255,255,0.45), transparent),
+      radial-gradient(1.5px 1.5px at 65% 18%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 82% 58%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1.5px 1.5px at 50% 85%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 8% 50%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 95% 12%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 28% 5%, rgba(255,255,255,0.35), transparent);
+    animation: stars-twinkle 12s ease-in-out infinite alternate-reverse;
+  }
+  .stars-near {
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(2px 2px at 22% 35%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(2.5px 2.5px at 70% 42%, rgba(255,255,255,0.55), transparent),
+      radial-gradient(2px 2px at 45% 78%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(2px 2px at 88% 25%, rgba(255,255,255,0.45), transparent);
+    animation: stars-twinkle 6s ease-in-out infinite alternate;
+  }
+  @keyframes stars-twinkle {
+    0% { opacity: 0.7; }
+    100% { opacity: 1; }
+  }
+
+  /* Perspective grid floor — prominent, recedes into depth */
+  .depth-grid {
+    position: absolute;
+    bottom: 0;
+    left: -40%;
+    right: -40%;
+    height: 65%;
+    pointer-events: none;
+    z-index: 0;
+    background:
+      repeating-linear-gradient(90deg,
+        transparent 0px,
+        transparent 58px,
+        rgba(100, 170, 230, 0.12) 58px,
+        rgba(100, 170, 230, 0.12) 60px
+      ),
+      repeating-linear-gradient(0deg,
+        transparent 0px,
+        transparent 58px,
+        rgba(100, 170, 230, 0.08) 58px,
+        rgba(100, 170, 230, 0.08) 60px
+      );
+    transform: perspective(500px) rotateX(60deg);
+    transform-origin: center bottom;
+    mask-image: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, transparent 75%);
+    -webkit-mask-image: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 40%, transparent 75%);
+  }
+
+  /* Subtle noise/grain — reduced for space feel */
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 2;
+    opacity: 0.15;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)' opacity='0.4'/%3E%3C/svg%3E");
+    background-size: 256px 256px;
+    mix-blend-mode: multiply;
+  }
+
+  /* Nebula clouds — colorful, more vivid for space feel */
+  .murk {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+  }
+  .murk-1 {
+    width: 700px; height: 700px;
+    top: -250px; left: -200px;
+    background: radial-gradient(circle,
+      rgba(200, 200, 210, 0.15) 0%,
+      rgba(210, 210, 215, 0.06) 40%,
+      transparent 70%
+    );
+    filter: blur(100px);
+    animation: murk-drift 40s ease-in-out infinite alternate;
+  }
+  .murk-2 {
+    width: 550px; height: 550px;
+    bottom: -200px; right: -100px;
+    background: radial-gradient(circle,
+      rgba(195, 200, 210, 0.12) 0%,
+      rgba(200, 205, 210, 0.05) 40%,
+      transparent 70%
+    );
+    filter: blur(90px);
+    animation: murk-drift2 35s ease-in-out infinite alternate;
+  }
+  .murk-3 {
+    width: 400px; height: 400px;
+    top: 35%; left: 55%;
+    background: radial-gradient(circle,
+      rgba(205, 205, 210, 0.10) 0%,
+      transparent 60%
+    );
+    filter: blur(80px);
+    animation: murk-drift3 28s ease-in-out infinite alternate;
+  }
+  .murk-4 {
+    width: 300px; height: 300px;
+    top: 60%; left: 10%;
+    background: radial-gradient(circle,
+      rgba(210, 210, 215, 0.08) 0%,
+      transparent 60%
+    );
+    filter: blur(70px);
+  }
+
+  @keyframes murk-drift { from { transform: translate(0,0) scale(1); } to { transform: translate(30px, 20px) scale(1.05); } }
+  @keyframes murk-drift2 { from { transform: translate(0,0); } to { transform: translate(-25px, -15px); } }
+  @keyframes murk-drift3 { from { transform: translate(0,0); } to { transform: translate(15px, -20px); } }
+
+  /* Floating dust motes / spores */
+  .spores {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+    z-index: 1;
+  }
+  .spore {
+    position: absolute;
+    border-radius: 50%;
+    animation: spore-float linear infinite;
+  }
+  @keyframes spore-float {
+    0% { transform: translateY(110%) translateX(0) scale(0.5); opacity: 0; }
+    8% { opacity: 0.8; }
+    50% { transform: translateY(50%) translateX(20px) scale(1); opacity: 0.6; }
+    92% { opacity: 0.4; }
+    100% { transform: translateY(-5%) translateX(-10px) scale(0.3); opacity: 0; }
+  }
+
+  /* Out-of-focus light blobs in the deep background */
+  .bokeh {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bokeh-1 {
+    width: 100px; height: 100px;
+    top: 20%; left: 12%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+    filter: blur(25px);
+    animation: bokeh-pulse 15s ease-in-out infinite alternate;
+  }
+  .bokeh-2 {
+    width: 70px; height: 70px;
+    top: 55%; right: 18%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+    filter: blur(20px);
+    animation: bokeh-pulse 20s ease-in-out infinite alternate-reverse;
+  }
+  .bokeh-3 {
+    width: 120px; height: 120px;
+    bottom: 25%; left: 40%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.15) 50%, transparent 70%);
+    filter: blur(30px);
+    animation: bokeh-pulse 18s ease-in-out infinite alternate;
+  }
+  .bokeh-4 {
+    width: 50px; height: 50px;
+    top: 15%; right: 30%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.7), transparent 70%);
+    filter: blur(15px);
+    animation: bokeh-pulse 12s ease-in-out infinite alternate-reverse;
+  }
+  @keyframes bokeh-pulse {
+    0% { opacity: 0.6; transform: scale(1); }
+    100% { opacity: 1; transform: scale(1.15); }
+  }
+
+  .frame-content {
+    position: relative;
+    z-index: 5;
+  }
+
+  /* ═══════════════════════════════════════════
+     GLASS BUBBLE — the core effect
+     ═══════════════════════════════════════════ */
+  .glass {
+    background: linear-gradient(145deg,
+      rgba(240, 248, 255, 0.65) 0%,
+      rgba(255, 255, 255, 0.35) 40%,
+      rgba(245, 250, 255, 0.45) 100%
+    );
+    backdrop-filter: blur(40px) saturate(1.2);
+    -webkit-backdrop-filter: blur(40px) saturate(1.2);
+    border: 1px solid rgba(200, 225, 255, 0.5);
+    box-shadow:
+      0 4px 8px rgba(100, 150, 200, 0.04),
+      0 12px 28px rgba(100, 150, 200, 0.06),
+      0 32px 64px rgba(100, 150, 200, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.8),
+      inset 0 -1px 0 rgba(200, 225, 255, 0.2);
+  }
+
+  /* Edge light catch — icy refraction */
+  .glass::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(
+      135deg,
+      rgba(200, 230, 255, 0.5) 0%,
+      rgba(220, 240, 255, 0.2) 20%,
+      transparent 40%,
+      transparent 60%,
+      rgba(200, 230, 255, 0.15) 80%,
+      rgba(180, 220, 255, 0.35) 100%
+    );
+    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  /* Specular highlight — the "glass gleam" */
+  .glass::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 8%;
+    right: 25%;
+    height: 45%;
+    border-radius: inherit;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.5) 0%,
+      rgba(255, 255, 255, 0.1) 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+    border-radius: 50% 50% 40% 40% / 100% 100% 0% 0%;
+  }
+
+  /* ═══════════════════════════════════════════
+     CHANNEL BAR — thin glass strip
+     ═══════════════════════════════════════════ */
+  .channel-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 32px;
+    position: relative;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.5),
+      rgba(255, 255, 255, 0.25)
+    );
+    backdrop-filter: blur(40px) saturate(1.3);
+    -webkit-backdrop-filter: blur(40px) saturate(1.3);
+    border-bottom: 1px solid rgba(140, 195, 245, 0.2);
+    box-shadow:
+      0 4px 20px rgba(100, 160, 220, 0.04),
+      inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  }
+
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  /* Glowing glass orb */
+  .logo-orb {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%,
+      rgba(200, 230, 255, 0.9),
+      rgba(150, 200, 240, 0.5) 50%,
+      rgba(120, 180, 230, 0.3) 100%
+    );
+    border: 1px solid rgba(180, 215, 255, 0.6);
+    box-shadow:
+      0 2px 8px rgba(100, 160, 220, 0.15),
+      0 0 20px rgba(150, 200, 255, 0.25),
+      inset 0 0 8px rgba(200, 230, 255, 0.4);
+    animation: orb-breathe 6s ease-in-out infinite;
+  }
+
+  @keyframes orb-breathe {
+    0%, 100% { box-shadow: 0 2px 8px rgba(100, 160, 220, 0.15), 0 0 20px rgba(150, 200, 255, 0.25), inset 0 0 8px rgba(200, 230, 255, 0.4); }
+    50% { box-shadow: 0 2px 8px rgba(100, 160, 220, 0.15), 0 0 30px rgba(150, 200, 255, 0.4), inset 0 0 12px rgba(200, 230, 255, 0.5); }
+  }
+
+  .logo-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    color: rgba(0, 0, 0, 0.35);
+  }
+
+  .tag-filters {
+    display: flex;
+    gap: 6px;
+  }
+
+  .tag-pill {
+    padding: 6px 16px;
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    cursor: pointer;
+  }
+
+  .tag-pill.active {
+    color: rgba(30, 80, 140, 0.7);
+    background: rgba(210, 235, 255, 0.5);
+    border-color: rgba(160, 210, 255, 0.6);
+    box-shadow: 0 2px 12px rgba(100, 170, 240, 0.1);
+  }
+
+  /* ═══════════════════════════════════════════
+     CARD GRID — organic floating feel
+     ═══════════════════════════════════════════ */
+  .card-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    padding: 36px 32px;
+  }
+
+  .card {
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  /* Cards at slightly different vertical positions for floating feel */
+  .card:nth-child(2) { transform: translateY(12px); }
+  .card:nth-child(3) { transform: translateY(-6px); }
+  .card:nth-child(4) { transform: translateY(8px); }
+  .card:nth-child(5) { transform: translateY(-10px); }
+  .card:nth-child(6) { transform: translateY(4px); }
+
+  .card.hovered {
+    border-color: rgba(170, 215, 255, 0.6);
+    box-shadow:
+      0 8px 16px rgba(100, 160, 220, 0.06),
+      0 20px 48px rgba(100, 160, 220, 0.08),
+      0 0 40px rgba(140, 200, 255, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9),
+      inset 0 -1px 0 rgba(200, 230, 255, 0.3);
+    transform: translateY(-4px) scale(1.02);
+  }
+
+  .card.hovered::before {
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0.3) 25%,
+      transparent 40%,
+      transparent 60%,
+      rgba(255, 255, 255, 0.2) 80%,
+      rgba(255, 255, 255, 0.5) 100%
+    );
+  }
+
+  .card-thumb {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background:
+      radial-gradient(ellipse at 50% 60%, rgba(200, 200, 200, 0.3), transparent 60%),
+      linear-gradient(160deg, rgba(230, 230, 230, 0.8), rgba(210, 210, 210, 0.9));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .play-ring {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .card.hovered .play-ring {
+    border-color: rgba(0, 0, 0, 0.15);
+    background: rgba(255, 255, 255, 0.7);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+  }
+
+  .play-tri {
+    width: 0; height: 0;
+    border-left: 12px solid rgba(0, 0, 0, 0.25);
+    border-top: 7px solid transparent;
+    border-bottom: 7px solid transparent;
+    margin-left: 3px;
+  }
+
+  .card.hovered .play-tri {
+    border-left-color: rgba(0, 0, 0, 0.5);
+  }
+
+  .card-body {
+    padding: 18px 20px 22px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.75);
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+  }
+
+  .card.hovered .card-title {
+    color: rgba(0, 0, 0, 0.9);
+  }
+
+  .card-artist {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.06em;
+    margin-bottom: 10px;
+  }
+
+  .card-excerpt {
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.35);
+    line-height: 1.6;
+    margin-bottom: 14px;
+  }
+
+  .card.hovered .card-excerpt {
+    color: rgba(0, 0, 0, 0.5);
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    padding: 4px 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .tag.violet {
+    color: rgba(0, 0, 0, 0.4);
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .tag.sea {
+    color: rgba(0, 0, 0, 0.35);
+    border-color: rgba(0, 0, 0, 0.07);
+  }
+
+  .tag.warm {
+    color: rgba(0, 0, 0, 0.35);
+    border-color: rgba(0, 0, 0, 0.07);
+  }
+
+  /* ═══════════════════════════════════════════
+     PAGINATION — barely-there glass strip
+     ═══════════════════════════════════════════ */
+  .pagination-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    position: relative;
+    background: linear-gradient(0deg,
+      rgba(255, 255, 255, 0.35),
+      rgba(255, 255, 255, 0.15)
+    );
+    backdrop-filter: blur(30px) saturate(1.2);
+    -webkit-backdrop-filter: blur(30px) saturate(1.2);
+    border-top: 1px solid rgba(140, 195, 245, 0.15);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  }
+
+  .page-dots {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  .page-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.04);
+  }
+
+  .page-dot.active {
+    width: 24px;
+    border-radius: 6px;
+    background: rgba(120, 185, 245, 0.35);
+    border-color: rgba(120, 185, 245, 0.3);
+    box-shadow: 0 0 8px rgba(120, 185, 245, 0.15);
+  }
+
+  .page-count {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.2);
+    letter-spacing: 0.1em;
+  }
+
+  /* ═══════════════════════════════════════════
+     EXPANDED CARD STATE
+     ═══════════════════════════════════════════ */
+  .card-grid.has-expanded {
+    grid-template-columns: 1fr;
+  }
+
+  .card.dimmed {
+    opacity: 0.1;
+    filter: blur(4px) saturate(0.2);
+    transform: scale(0.96) !important;
+  }
+
+  .card.expanded {
+    border-color: rgba(255, 255, 255, 0.8);
+    box-shadow:
+      0 8px 32px rgba(0, 0, 0, 0.06),
+      0 24px 64px rgba(0, 0, 0, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.9);
+  }
+
+  .expanded-video {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background:
+      radial-gradient(ellipse at 50% 50%, rgba(220, 220, 220, 0.3), transparent 60%),
+      linear-gradient(160deg, rgba(235, 235, 235, 0.8), rgba(225, 225, 225, 0.9));
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Targeting brackets — delicate, glowing */
+  .brackets {
+    position: absolute;
+    inset: 16px;
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  .br-corner {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+  }
+
+  .br-corner.tl { top: 0; left: 0; border-top: 1.5px solid rgba(100, 175, 240, 0.4); border-left: 1.5px solid rgba(100, 175, 240, 0.4); }
+  .br-corner.tr { top: 0; right: 0; border-top: 1.5px solid rgba(100, 175, 240, 0.4); border-right: 1.5px solid rgba(100, 175, 240, 0.4); }
+  .br-corner.bl { bottom: 0; left: 0; border-bottom: 1.5px solid rgba(100, 175, 240, 0.4); border-left: 1.5px solid rgba(100, 175, 240, 0.4); }
+  .br-corner.br { bottom: 0; right: 0; border-bottom: 1.5px solid rgba(100, 175, 240, 0.4); border-right: 1.5px solid rgba(100, 175, 240, 0.4); }
+
+  .br-corner { filter: drop-shadow(0 0 6px rgba(100, 175, 240, 0.2)); }
+
+  .video-ghost-text {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.08);
+    z-index: 2;
+  }
+
+  /* ═══════════════════════════════════════════
+     SCAN LINES — retro CRT overlay
+     ═══════════════════════════════════════════ */
+  .card-thumb::after,
+  .expanded-video::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 3;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.04) 2px,
+      rgba(0, 0, 0, 0.04) 4px
+    );
+    mix-blend-mode: multiply;
+  }
+
+  /* Slightly stronger scan lines on expanded/theater video */
+  .expanded-video::after {
+    background: repeating-linear-gradient(
+      0deg,
+      transparent 0px,
+      transparent 2px,
+      rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.06) 4px
+    );
+  }
+
+  /* Soft separator */
+  .soft-glow {
+    height: 1px;
+    background: linear-gradient(90deg,
+      transparent 5%,
+      rgba(120, 185, 240, 0.15) 30%,
+      rgba(120, 185, 240, 0.25) 50%,
+      rgba(120, 185, 240, 0.15) 70%,
+      transparent 95%
+    );
+  }
+
+  .expanded-body {
+    padding: 28px 32px 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  .expanded-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  .expanded-artist {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.08em;
+    margin-bottom: 18px;
+  }
+
+  .expanded-excerpt {
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.4);
+    line-height: 1.8;
+    margin-bottom: 20px;
+    max-width: 650px;
+  }
+
+  .esc-hint {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.15);
+    text-align: center;
+    padding: 12px;
+  }
+  .esc-hint em {
+    font-style: normal;
+    color: rgba(0, 0, 0, 0.3);
+  }
+
+  /* ═══════════════════════════════════════════
+     MOBILE FRAME
+     ═══════════════════════════════════════════ */
+  .artboard.mobile {
+    max-width: 390px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mobile .card-grid {
+    grid-template-columns: 1fr;
+    padding: 24px 18px;
+    gap: 20px;
+  }
+
+  .mobile .card:nth-child(n) {
+    transform: none;
+  }
+  .mobile .card:nth-child(2) { transform: translateX(8px); }
+  .mobile .card:nth-child(3) { transform: translateX(-5px); }
+
+  .mobile .channel-bar {
+    padding: 14px 18px;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .mobile .tag-filters {
+    gap: 4px;
+    overflow-x: auto;
+  }
+
+  .mobile .tag-pill {
+    padding: 4px 10px;
+    font-size: 8px;
+    white-space: nowrap;
+  }
+
+  .mobile .pagination-bar {
+    padding: 14px 18px;
+  }
+
+  .mobile .logo-text {
+    font-size: 12px;
+  }
+
+  .mobile .logo-orb {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* ═══════════════════════════════════════════
+     ANNOTATION
+     ═══════════════════════════════════════════ */
+  .annotation {
+    position: absolute;
+    font-family: 'Space Mono', monospace;
+    font-size: 8px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.4);
+    border: 1px solid rgba(0, 0, 0, 0.06);
+    padding: 3px 10px;
+    border-radius: 10px;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  /* ═══════════════════════════════════════════
+     FLOATING DECORATIVE BUBBLES
+     (empty glass orbs in the background)
+     ═══════════════════════════════════════════ */
+  .deco-bubble {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 3;
+    background: radial-gradient(circle at 30% 25%,
+      rgba(255, 255, 255, 0.7),
+      rgba(255, 255, 255, 0.3) 40%,
+      rgba(255, 255, 255, 0.15) 60%,
+      transparent 70%
+    );
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    box-shadow:
+      inset 0 0 25px rgba(255, 255, 255, 0.4),
+      0 4px 20px rgba(0, 0, 0, 0.04),
+      0 0 30px rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  .deco-bubble::after {
+    content: '';
+    position: absolute;
+    top: 12%;
+    left: 18%;
+    width: 35%;
+    height: 22%;
+    border-radius: 50%;
+    background: linear-gradient(180deg,
+      rgba(255, 255, 255, 0.8),
+      rgba(255, 255, 255, 0.2)
+    );
+    filter: blur(2px);
+  }
+
+  /* ═══════════════════════════════════════════
+     THEATER MODE
+     ═══════════════════════════════════════════ */
+  .theater {
+    display: grid;
+    grid-template-columns: 7fr 3fr;
+    gap: 20px;
+    padding: 32px;
+    align-items: start;
+  }
+
+  .theater-video {
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .theater-video .expanded-video {
+    border-radius: 0;
+  }
+
+  .theater-info {
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 300px;
+  }
+
+  .theater-info-inner {
+    padding: 28px 24px;
+  }
+
+  .theater-title {
+    font-family: 'Inter', sans-serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.8);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+  }
+
+  .theater-artist {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: rgba(0, 0, 0, 0.35);
+    letter-spacing: 0.08em;
+  }
+
+  .theater-excerpt {
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 300;
+    color: rgba(0, 0, 0, 0.4);
+    line-height: 1.8;
+  }
+
+  .theater-info .esc-hint {
+    border-top: 1px solid rgba(0, 0, 0, 0.04);
+    margin-top: auto;
+  }
+
+  /* Theater mobile — stack vertically */
+  .theater.theater-mobile {
+    grid-template-columns: 1fr;
+    padding: 20px 18px;
+    gap: 16px;
+  }
+
+  .theater.theater-mobile .theater-info {
+    min-height: auto;
+  }
+
+  .theater.theater-mobile .theater-info-inner {
+    padding: 20px 18px;
+  }
+
+  .theater.theater-mobile .theater-title {
+    font-size: 17px;
+  }
+
+  .theater.theater-mobile .theater-excerpt {
+    font-size: 12px;
+  }
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     ARTBOARD 1: DEFAULT STATE
+     ═══════════════════════════════════════════════════ -->
+<p class="mockup-label">01 &mdash; default / desktop</p>
+<div class="artboard">
+  <div class="frame" style="min-height: 820px;">
+    <div class="stars">
+      <div class="stars-far"></div>
+      <div class="stars-mid"></div>
+      <div class="stars-near"></div>
+    </div>
+    <div class="depth-grid"></div>
+    <div class="grain"></div>
+    <div class="murk murk-1"></div>
+    <div class="murk murk-2"></div>
+    <div class="murk murk-3"></div>
+    <div class="murk murk-4"></div>
+
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+    <div class="bokeh bokeh-4"></div>
+
+    <!-- Floating decorative glass bubbles -->
+    <div class="deco-bubble" style="width:120px;height:120px;top:8%;right:8%;opacity:0.5;"></div>
+    <div class="deco-bubble" style="width:60px;height:60px;top:45%;left:4%;opacity:0.4;"></div>
+    <div class="deco-bubble" style="width:40px;height:40px;bottom:20%;right:15%;opacity:0.3;"></div>
+    <div class="deco-bubble" style="width:80px;height:80px;bottom:8%;left:18%;opacity:0.35;"></div>
+
+    <!-- Spores / dust motes -->
+    <div class="spores">
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.3);left:12%;animation-duration:18s;animation-delay:0s;"></div>
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.25);left:28%;animation-duration:24s;animation-delay:4s;"></div>
+      <div class="spore" style="width:2.5px;height:2.5px;background:rgba(0,0,0,0.2);left:48%;animation-duration:20s;animation-delay:8s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.3);left:68%;animation-duration:28s;animation-delay:2s;"></div>
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.2);left:85%;animation-duration:22s;animation-delay:6s;"></div>
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.25);left:5%;animation-duration:26s;animation-delay:10s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.2);left:38%;animation-duration:30s;animation-delay:3s;"></div>
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.2);left:72%;animation-duration:19s;animation-delay:12s;"></div>
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.2);left:55%;animation-duration:25s;animation-delay:7s;"></div>
+    </div>
+
+    <div class="frame-content">
+
+      <!-- Channel Bar -->
+      <div class="channel-bar">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <span class="logo-text">MOL</span>
+        </div>
+        <div class="tag-filters">
+          <span class="tag-pill active">All</span>
+          <span class="tag-pill">Electronic</span>
+          <span class="tag-pill">Ambient</span>
+          <span class="tag-pill">Synthwave</span>
+          <span class="tag-pill">Experimental</span>
+        </div>
+      </div>
+
+      <!-- Card Grid -->
+      <div class="card-grid">
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Resonance</div>
+            <div class="card-artist">Home</div>
+            <div class="card-excerpt">The quintessential synthwave track. A neon-drenched drive through an infinite sunset...</div>
+            <div class="card-tags">
+              <span class="tag violet">synthwave</span>
+              <span class="tag warm">2014</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass hovered">
+          <span class="annotation" style="top: -26px; right: 16px;">hover</span>
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Xtal</div>
+            <div class="card-artist">Aphex Twin</div>
+            <div class="card-excerpt">Ambient techno at its most delicate. Like waking up inside a crystalline structure...</div>
+            <div class="card-tags">
+              <span class="tag sea">ambient</span>
+              <span class="tag violet">electronic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Midnight City</div>
+            <div class="card-artist">M83</div>
+            <div class="card-excerpt">Anthemic synths crashing like waves against a skyline at dusk...</div>
+            <div class="card-tags">
+              <span class="tag violet">electronic</span>
+              <span class="tag warm">2011</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Oblivion</div>
+            <div class="card-artist">Grimes</div>
+            <div class="card-excerpt">Pop structure dissolved in reverb and haze. Haunting and unstoppable...</div>
+            <div class="card-tags">
+              <span class="tag warm">experimental</span>
+              <span class="tag sea">dream pop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Flim</div>
+            <div class="card-artist">Aphex Twin</div>
+            <div class="card-excerpt">Two minutes of pure melodic gentleness from an unlikely source...</div>
+            <div class="card-tags">
+              <span class="tag sea">ambient</span>
+              <span class="tag violet">IDM</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Digital Love</div>
+            <div class="card-artist">Daft Punk</div>
+            <div class="card-excerpt">Filtered disco bliss with a guitar solo that arrives like sunrise...</div>
+            <div class="card-tags">
+              <span class="tag violet">electronic</span>
+              <span class="tag warm">french house</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div class="pagination-bar">
+        <div class="page-dots">
+          <div class="page-dot"></div>
+          <div class="page-dot active"></div>
+          <div class="page-dot"></div>
+          <div class="page-dot"></div>
+        </div>
+        <span class="page-count">01 / 04</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ARTBOARD 2: EXPANDED CARD STATE
+     ═══════════════════════════════════════════════════ -->
+<p class="mockup-label">02 &mdash; expanded card</p>
+<div class="artboard">
+  <div class="frame" style="min-height: 760px;">
+    <div class="stars">
+      <div class="stars-far"></div>
+      <div class="stars-mid"></div>
+      <div class="stars-near"></div>
+    </div>
+    <div class="depth-grid"></div>
+    <div class="grain"></div>
+    <div class="murk murk-1"></div>
+    <div class="murk murk-2"></div>
+    <div class="murk murk-3"></div>
+
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+
+    <div class="deco-bubble" style="width:90px;height:90px;top:12%;left:5%;opacity:0.4;"></div>
+    <div class="deco-bubble" style="width:50px;height:50px;bottom:25%;right:6%;opacity:0.3;"></div>
+
+    <div class="spores">
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.25);left:15%;animation-duration:20s;animation-delay:1s;"></div>
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.2);left:45%;animation-duration:26s;animation-delay:5s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.25);left:75%;animation-duration:22s;animation-delay:3s;"></div>
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.2);left:60%;animation-duration:18s;animation-delay:9s;"></div>
+    </div>
+
+    <div class="frame-content">
+
+      <div class="channel-bar">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <span class="logo-text">MOL</span>
+        </div>
+        <div class="tag-filters">
+          <span class="tag-pill active">All</span>
+          <span class="tag-pill">Electronic</span>
+          <span class="tag-pill">Ambient</span>
+          <span class="tag-pill">Synthwave</span>
+          <span class="tag-pill">Experimental</span>
+        </div>
+      </div>
+
+      <div class="card-grid has-expanded">
+
+        <div class="card glass expanded">
+          <div class="expanded-video">
+            <div class="brackets">
+              <div class="br-corner tl"></div>
+              <div class="br-corner tr"></div>
+              <div class="br-corner bl"></div>
+              <div class="br-corner br"></div>
+            </div>
+            <span class="video-ghost-text">YouTube Embed</span>
+          </div>
+          <div class="soft-glow"></div>
+          <div class="expanded-body">
+            <div class="expanded-title">Resonance</div>
+            <div class="expanded-artist">Home</div>
+            <div class="expanded-excerpt">The quintessential synthwave track. A neon-drenched drive through an infinite sunset highway. This is the song that launched a thousand YouTube mixes and defined an entire microgenre's visual language.</div>
+            <div class="card-tags">
+              <span class="tag violet">synthwave</span>
+              <span class="tag warm">2014</span>
+              <span class="tag sea">retro</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="esc-hint"><em>esc</em> to close &middot; resonance</div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+          <div class="card glass dimmed">
+            <div class="card-thumb">
+              <div class="play-ring"><div class="play-tri"></div></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Xtal</div>
+              <div class="card-artist">Aphex Twin</div>
+              <div class="card-excerpt">Ambient techno at its most delicate...</div>
+              <div class="card-tags"><span class="tag sea">ambient</span></div>
+            </div>
+          </div>
+          <div class="card glass dimmed">
+            <div class="card-thumb">
+              <div class="play-ring"><div class="play-tri"></div></div>
+            </div>
+            <div class="card-body">
+              <div class="card-title">Midnight City</div>
+              <div class="card-artist">M83</div>
+              <div class="card-excerpt">Anthemic synths crashing like waves...</div>
+              <div class="card-tags"><span class="tag violet">electronic</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination-bar">
+        <div class="page-dots">
+          <div class="page-dot"></div>
+          <div class="page-dot active"></div>
+          <div class="page-dot"></div>
+          <div class="page-dot"></div>
+        </div>
+        <span class="page-count">01 / 04</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ARTBOARD 3: MOBILE LAYOUT
+     ═══════════════════════════════════════════════════ -->
+<p class="mockup-label">03 &mdash; mobile / 390px</p>
+<div class="artboard mobile">
+  <div class="frame" style="min-height: 880px;">
+    <div class="stars">
+      <div class="stars-far"></div>
+      <div class="stars-mid"></div>
+      <div class="stars-near"></div>
+    </div>
+    <div class="depth-grid"></div>
+    <div class="grain"></div>
+    <div class="murk murk-1"></div>
+    <div class="murk murk-2"></div>
+
+    <div class="deco-bubble" style="width:70px;height:70px;top:10%;right:8%;opacity:0.35;"></div>
+    <div class="deco-bubble" style="width:40px;height:40px;bottom:30%;left:5%;opacity:0.25;"></div>
+
+    <div class="spores">
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.3);left:20%;animation-duration:22s;animation-delay:2s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.2);left:60%;animation-duration:26s;animation-delay:6s;"></div>
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.2);left:80%;animation-duration:20s;animation-delay:0s;"></div>
+    </div>
+
+    <div class="frame-content">
+
+      <div class="channel-bar">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <span class="logo-text">MOL</span>
+        </div>
+        <div class="tag-filters">
+          <span class="tag-pill active">All</span>
+          <span class="tag-pill">Electronic</span>
+          <span class="tag-pill">Ambient</span>
+          <span class="tag-pill">Synth</span>
+        </div>
+      </div>
+
+      <div class="card-grid">
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Resonance</div>
+            <div class="card-artist">Home</div>
+            <div class="card-excerpt">The quintessential synthwave track. A neon-drenched drive through an infinite sunset...</div>
+            <div class="card-tags">
+              <span class="tag violet">synthwave</span>
+              <span class="tag warm">2014</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Xtal</div>
+            <div class="card-artist">Aphex Twin</div>
+            <div class="card-excerpt">Ambient techno at its most delicate. Like waking up inside a crystalline structure...</div>
+            <div class="card-tags">
+              <span class="tag sea">ambient</span>
+              <span class="tag violet">electronic</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card glass">
+          <div class="card-thumb">
+            <div class="play-ring"><div class="play-tri"></div></div>
+          </div>
+          <div class="card-body">
+            <div class="card-title">Midnight City</div>
+            <div class="card-artist">M83</div>
+            <div class="card-excerpt">Anthemic synths crashing like waves against a skyline at dusk...</div>
+            <div class="card-tags">
+              <span class="tag violet">electronic</span>
+              <span class="tag warm">2011</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="pagination-bar">
+        <div class="page-dots">
+          <div class="page-dot"></div>
+          <div class="page-dot active"></div>
+          <div class="page-dot"></div>
+          <div class="page-dot"></div>
+        </div>
+        <span class="page-count">01 / 04</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ARTBOARD 4: THEATER / WATCH MODE
+     ═══════════════════════════════════════════════════ -->
+<p class="mockup-label">04 &mdash; theater mode</p>
+<div class="artboard">
+  <div class="frame" style="min-height: 700px;">
+    <div class="stars">
+      <div class="stars-far"></div>
+      <div class="stars-mid"></div>
+      <div class="stars-near"></div>
+    </div>
+    <div class="depth-grid"></div>
+    <div class="grain"></div>
+    <div class="murk murk-1"></div>
+    <div class="murk murk-2"></div>
+    <div class="murk murk-3"></div>
+    <div class="murk murk-4"></div>
+
+    <div class="bokeh bokeh-1"></div>
+    <div class="bokeh bokeh-2"></div>
+    <div class="bokeh bokeh-3"></div>
+
+    <div class="deco-bubble" style="width:100px;height:100px;top:10%;right:5%;opacity:0.4;"></div>
+    <div class="deco-bubble" style="width:50px;height:50px;bottom:15%;left:8%;opacity:0.3;"></div>
+
+    <div class="spores">
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.25);left:10%;animation-duration:20s;animation-delay:1s;"></div>
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.2);left:40%;animation-duration:26s;animation-delay:5s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.25);left:70%;animation-duration:22s;animation-delay:3s;"></div>
+      <div class="spore" style="width:2px;height:2px;background:rgba(0,0,0,0.2);left:55%;animation-duration:18s;animation-delay:9s;"></div>
+    </div>
+
+    <div class="frame-content">
+
+      <!-- Channel Bar (dimmed in theater mode) -->
+      <div class="channel-bar" style="opacity: 0.4;">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <span class="logo-text">MOL</span>
+        </div>
+        <div class="tag-filters">
+          <span class="tag-pill active">All</span>
+          <span class="tag-pill">Electronic</span>
+          <span class="tag-pill">Ambient</span>
+          <span class="tag-pill">Synthwave</span>
+          <span class="tag-pill">Experimental</span>
+        </div>
+      </div>
+
+      <!-- Theater layout -->
+      <div class="theater">
+
+        <!-- Video panel (~70%) -->
+        <div class="theater-video glass">
+          <div class="expanded-video" style="aspect-ratio: 16/9;">
+            <div class="brackets">
+              <div class="br-corner tl"></div>
+              <div class="br-corner tr"></div>
+              <div class="br-corner bl"></div>
+              <div class="br-corner br"></div>
+            </div>
+            <span class="video-ghost-text">YouTube Embed</span>
+          </div>
+        </div>
+
+        <!-- Info sidebar (~30%) -->
+        <div class="theater-info glass">
+          <div class="theater-info-inner">
+            <div class="theater-title">Resonance</div>
+            <div class="theater-artist">Home</div>
+            <div class="soft-glow" style="margin: 18px 0;"></div>
+            <div class="theater-excerpt">
+              The quintessential synthwave track. A neon-drenched drive through an infinite sunset highway. This is the song that launched a thousand YouTube mixes and defined an entire microgenre's visual language.
+            </div>
+            <div class="card-tags" style="margin-top: 20px;">
+              <span class="tag violet">synthwave</span>
+              <span class="tag warm">2014</span>
+              <span class="tag sea">retro</span>
+            </div>
+          </div>
+          <div class="esc-hint"><em>esc</em> to close</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══════════════════════════════════════════════════
+     ARTBOARD 5: THEATER MODE — MOBILE
+     ═══════════════════════════════════════════════════ -->
+<p class="mockup-label">05 &mdash; theater mode / mobile</p>
+<div class="artboard mobile">
+  <div class="frame" style="min-height: 700px;">
+    <div class="stars">
+      <div class="stars-far"></div>
+      <div class="stars-mid"></div>
+      <div class="stars-near"></div>
+    </div>
+    <div class="depth-grid"></div>
+    <div class="grain"></div>
+    <div class="murk murk-1"></div>
+    <div class="murk murk-2"></div>
+
+    <div class="deco-bubble" style="width:60px;height:60px;top:8%;right:6%;opacity:0.3;"></div>
+
+    <div class="spores">
+      <div class="spore" style="width:1.5px;height:1.5px;background:rgba(0,0,0,0.3);left:20%;animation-duration:22s;animation-delay:2s;"></div>
+      <div class="spore" style="width:1px;height:1px;background:rgba(0,0,0,0.2);left:65%;animation-duration:26s;animation-delay:6s;"></div>
+    </div>
+
+    <div class="frame-content">
+
+      <!-- Channel Bar (dimmed) -->
+      <div class="channel-bar" style="opacity: 0.4;">
+        <div class="logo">
+          <div class="logo-orb"></div>
+          <span class="logo-text">MOL</span>
+        </div>
+      </div>
+
+      <!-- Theater stacked for mobile -->
+      <div class="theater theater-mobile">
+
+        <div class="theater-video glass">
+          <div class="expanded-video" style="aspect-ratio: 16/9;">
+            <div class="brackets">
+              <div class="br-corner tl"></div>
+              <div class="br-corner tr"></div>
+              <div class="br-corner bl"></div>
+              <div class="br-corner br"></div>
+            </div>
+            <span class="video-ghost-text">YouTube Embed</span>
+          </div>
+        </div>
+
+        <div class="theater-info glass">
+          <div class="theater-info-inner">
+            <div class="theater-title">Resonance</div>
+            <div class="theater-artist">Home</div>
+            <div class="soft-glow" style="margin: 14px 0;"></div>
+            <div class="theater-excerpt">
+              The quintessential synthwave track. A neon-drenched drive through an infinite sunset highway.
+            </div>
+            <div class="card-tags" style="margin-top: 16px;">
+              <span class="tag violet">synthwave</span>
+              <span class="tag warm">2014</span>
+              <span class="tag sea">retro</span>
+            </div>
+          </div>
+          <div class="esc-hint"><em>esc</em> to close</div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

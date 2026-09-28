@@ -1,0 +1,29 @@
+.watch-hud {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  z-index: 5;
+  transition: opacity var(--duration-normal) ease;
+}
+
+.watch-hud[data-visible='false'] {
+  opacity: 0;
+}
+
+.watch-hud[data-visible='true'] {
+  opacity: 0.8;
+}
+
+.watch-hud-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #fff;
+  font-family: var(--font-main);
+}
+
+.watch-hud-artist {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.7);
+  margin-top: 2px;
+  font-family: var(--font-main);
+}

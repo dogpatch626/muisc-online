@@ -1,0 +1,31 @@
+:root {
+  /* Background */
+  --bg-deep: #f5f5f5;
+
+  /* Accent */
+  --accent: hsl(200, 100%, 48%);
+  --accent-dim: hsl(200, 100%, 48% / 0.25);
+
+  /* Text */
+  --text-primary: hsl(210, 10%, 20%);
+  --text-secondary: hsl(210, 5%, 45%);
+  --text-muted: hsl(210, 5%, 60%);
+
+  /* Watch mode surfaces */
+  --surface-watch: #000;
+  --surface-card-border: rgba(0, 0, 0, 0.08);
+  --surface-card-shadow: rgba(0, 0, 0, 0.12);
+  --surface-accent-track: rgba(255, 255, 255, 0.1);
+
+  /* Typography */
+  --font-main: 'BM Hanna Air', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Radii */
+  --radius: 16px;
+  --radius-lg: 24px;
+
+  /* Timing */
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+}
