@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-A music video browser SPA with a PS2/ambient-inspired UI. Users browse a video carousel, then enter a fullscreen watch mode for playback. Built with React 19 + TypeScript + Vite, deployed to Cloudflare Pages.
+A music video browser SPA with a PS2/ambient-inspired UI. Users browse a video carousel, then enter a fullscreen watch mode for playback. Built with React 19 + TypeScript + Vite, deployed to Cloudflare Workers (static assets).
 
 **Note**: The directory name is `muisc-online` (typo). The package name is `music-online`.
 
@@ -15,9 +15,7 @@ pnpm dev          # Dev server with HMR
 pnpm build        # Type-check then build (tsc -b && vite build)
 pnpm lint         # ESLint
 pnpm preview      # Preview production build
-
-# Cloudflare
-npx wrangler pages deploy dist    # Deploy to Cloudflare Pages
+pnpm run deploy   # Build then deploy to Cloudflare Workers (wrangler deploy)
 ```
 
 ## Architecture
@@ -72,6 +70,6 @@ Video data is hardcoded in `App.tsx` as a `Video[]` array. The `Video` type is d
 - **Vite** with `@vitejs/plugin-react` (Babel) + `@cloudflare/vite-plugin`
 - **Tailwind CSS 3** with PostCSS + autoprefixer
 - **ESLint 9** flat config (`eslint.config.js`) with typescript-eslint, react-hooks, react-refresh
-- **Cloudflare Pages** deployment (SPA mode, `wrangler.jsonc`)
+- **Cloudflare Workers** static-assets deployment (SPA mode, `wrangler.jsonc`); `pnpm build` emits `dist/wrangler.json`, which `wrangler deploy` picks up
 - **pnpm** as package manager
 - No test runner configured
