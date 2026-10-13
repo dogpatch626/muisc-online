@@ -63,3 +63,28 @@
   font-family: var(--font-main);
   flex-shrink: 0;
 }
+
+/* Phone turned sideways: video fills the screen */
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 500px) {
+  .watch-mode {
+    height: 100dvh;
+    padding: 0;
+  }
+
+  .watch-card {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    aspect-ratio: auto;
+    border: none;
+    border-radius: 0;
+  }
+
+  .watch-card iframe {
+    border-radius: 0;
+  }
+
+  .watch-hint {
+    display: none;
+  }
+}

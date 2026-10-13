@@ -1,5 +1,5 @@
 import { WatchHUD } from './WatchHUD';
-import type { Video } from '@/types/video';
+import { embedUrl, type Video } from '@/types/video';
 import './WatchMode.css';
 
 interface WatchModeProps {
@@ -15,12 +15,13 @@ export function WatchMode({ video, onExit }: WatchModeProps) {
       <div className="watch-viewport">
         <div className="watch-card">
           <iframe
-            src={video.url}
+            src={embedUrl(video)}
             title={video.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerPolicy="strict-origin-when-cross-origin"
             allowFullScreen
           />
+          <div className="scanlines" />
           <WatchHUD title={video.title} artist={video.artist} />
           <div className="watch-accent-line">
             <div className="watch-accent-fill" />

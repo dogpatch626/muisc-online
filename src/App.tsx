@@ -2,57 +2,75 @@ import { useState, useEffect } from 'react';
 import { AmbientBackground } from './components/ambient/AmbientBackground';
 import { ChannelTile } from './components/stage/ChannelTile';
 import { WatchMode } from './components/watch/WatchMode';
-import type { Video } from './types/video';
+import { embedUrl, thumbnailUrl, type Video } from './types/video';
+import type { Post } from './types/post';
 import './App.css';
 
 const videos: Video[] = [
   {
-    id: 1,
-    title: 'Neon Dreams',
-    artist: 'Synthwave Collective',
-    thumbnail: 'https://picsum.photos/seed/video1/1280/720',
-    url: 'https://www.youtube-nocookie.com/embed/0cDe2pK4SoU?si=ZBtbDhW4dMFobigD&controls=0',
-    description: 'A pulsing journey through neon-lit cityscapes. Synthwave Collective captures the electric energy of late-night Tokyo with cascading arpeggios and warm analog pads.',
+    id: '0cDe2pK4SoU',
+    title: 'man in the mirror & Artist of the century',
+    artist: 'MIKE',
+    description: 'We\'re starting off the week with something more recent. MIKE brings two songs together to help present us something so simple yet complicated in all of the small details. This is one that really inspired me to get this project running.',
   },
   {
-    id: 2,
-    title: 'Electric Pulse',
-    artist: 'Digital Horizon',
-    thumbnail: 'https://picsum.photos/seed/video2/1280/720',
-    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4',
-    description: 'Digital Horizon pushes boundaries with layered bass textures and glitchy percussion. A meditation on technology and human connection.',
+    id: 'OH9A6tn_P6g', // TODO: real YouTube ID
+    title: 'Ignorance',
+    artist: 'Paramore',
+    description: 'Imagine 2012, playing AdventureQuest Worlds, and suddenly I\'m enthralled by this video popping up on YouTube. Truly one of my first inspirations.',
   },
   {
-    id: 3,
-    title: 'Cyber Rain',
-    artist: 'Tokyo Nights',
-    thumbnail: 'https://picsum.photos/seed/video3/1280/720',
-    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
-    description: 'Rain-soaked streets and reflections. Tokyo Nights blends lo-fi beats with ambient field recordings captured across Shibuya.',
+    id: 'IVNub204dOY', // TODO: real YouTube ID
+    title: 'Go Up ft. Cat Power',
+    artist: 'Cassius, Pharrell Williams',
+    description: 'Cassius, Pharrell and Cat Power work to create an incredible electronic dance track and top it off with a masterclass in creativity by the director Alexandre Courtès.',
   },
   {
-    id: 4,
-    title: 'Midnight Drive',
-    artist: 'RetroWave',
-    thumbnail: 'https://picsum.photos/seed/video4/1280/720',
-    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
-    description: 'Windows down, stereo up. RetroWave delivers the perfect soundtrack for cruising empty highways under a starlit sky.',
+    id: 'nhPaWIeULKk', // TODO: real YouTube ID
+    title: 'Stylo',
+    artist: 'Gorillaz',
+    description: 'With such striking vocals from Bobby Womack and an appearance from Bruce Willis, this video embodies what the track feels like, quite the chase.',
   },
   {
-    id: 5,
-    title: 'Quantum Echo',
-    artist: 'Future Bass',
-    thumbnail: 'https://picsum.photos/seed/video5/1280/720',
-    url: 'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
-    description: 'Future Bass explores the space between sound and silence. Shimmering chords dissolve into granular textures and re-emerge transformed.',
+    id: 'SBjQ9tuuTJQ', // TODO: real YouTube ID
+    title: 'The Pretender',
+    artist: 'Foo Fighters',
+    description: 'It was hard to choose what to put last, but this is another one of those formative videos that I first saw on MTV growing up. Foo Fighters, while not my favorite band these days, will always be so important because of how early I was introduced to them.',
   },
 ];
 
+// Mailbox posts. Append new ones at the end; the last is the newest.
+const posts: Post[] = [
+  {
+    id: 'welcome',
+    title: 'Welcome to Music Online', // TODO: your post
+    date: '10/13/2026',
+    body: 'Welcome to Music Online, a place to find new music and new music videos to watch! For as long as I can remember I\'ve not only been passionate about music but passionate about the videos attached to them. Music videos are an incredible way to enhance the storytelling of a song, but sometimes they\'re also just cool visuals to pair with it, and so here I present to you a fun project to share the things I love.',
+  },
+];
+
+// Keep in sync with the @media queries in App.css and WatchMode.css.
+// max-height excludes tablets, which are also coarse-pointer.
+const PHONE_LANDSCAPE = '(orientation: landscape) and (pointer: coarse) and (max-height: 500px)';
+
+// Cookie holds the newest post id the visitor has read
+const LAST_READ_COOKIE = 'mol_last_read';
+const readLastRead = () =>
+  document.cookie.match(new RegExp(`(?:^|; )${LAST_READ_COOKIE}=([^;]*)`))?.[1];
+// Everything after the last-read post is unread; no/unknown cookie means all unread
+const countUnread = (lastRead?: string) => posts.length - 1 - posts.findIndex((p) => p.id === lastRead);
+
 function App() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [mode, setMode] = useState<'browse' | 'watch'>('browse');
+  const [unread, setUnread] = useState(() => countUnread(readLastRead()));
 
-  const handlePlay = () => setMode('watch');
+  const markMailRead = () => {
+    document.cookie = `${LAST_READ_COOKIE}=${posts[posts.length - 1].id}; max-age=31536000; path=/; SameSite=Lax`;
+    setUnread(0);
+  };
+  const [mode, setMode] = useState<'browse' | 'watch'>(() =>
+    window.matchMedia(PHONE_LANDSCAPE).matches ? 'watch' : 'browse'
+  );
 
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -82,6 +100,14 @@ function App() {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, [mode]);
 
+  // Phones: landscape enters watch mode, portrait returns to browse
+  useEffect(() => {
+    const mq = window.matchMedia(PHONE_LANDSCAPE);
+    const onChange = () => setMode(mq.matches ? 'watch' : 'browse');
+    mq.addEventListener('change', onChange);
+    return () => mq.removeEventListener('change', onChange);
+  }, []);
+
   const current = videos[currentIndex];
 
   return (
@@ -95,14 +121,18 @@ function App() {
           </div>
           <div className="wii-stage">
             <ChannelTile
-              thumbnail={current.thumbnail}
+              thumbnail={thumbnailUrl(current)}
+              embed={embedUrl(current)}
               title={current.title}
               artist={current.artist}
               description={current.description}
               currentIndex={currentIndex}
               totalCount={videos.length}
               onNavigate={setCurrentIndex}
-              onClick={handlePlay}
+              onExpand={() => setMode('watch')}
+              posts={posts}
+              unread={unread}
+              onMailOpen={markMailRead}
             />
           </div>
           <footer className="app-footer">© Music Online — a sterile dreams project</footer>

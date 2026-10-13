@@ -1,4 +1,4 @@
-import { useRef, useMemo } from 'react';
+import { useRef, useMemo, useState } from 'react';
 import { Canvas, useFrame } from '@react-three/fiber';
 import * as THREE from 'three';
 
@@ -98,9 +98,28 @@ interface OrbData {
   trail: THREE.Vector3[];
 }
 
-function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
+function makeOrbs(): OrbData[] {
+  return Array.from({ length: 11 }, () => ({
+    position: new THREE.Vector3(
+      (Math.random() - 0.5) * WALL_X * 1.4,
+      FLOOR_Y + 0.5 + Math.random() * (CEILING_Y - FLOOR_Y - 1),
+      Z_NEAR - 1 - Math.random() * (Z_NEAR - Z_FAR - 2),
+    ),
+    velocity: new THREE.Vector3(
+      (Math.random() - 0.5) * 0.008,
+      (Math.random() - 0.5) * 0.005,
+      (Math.random() - 0.5) * 0.007,
+    ),
+    colorHex: PS2_COLORS[Math.floor(Math.random() * PS2_COLORS.length)],
+    trail: [],
+  }));
+}
+
+function GlowOrb({ orb: initialOrb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
   const groupRef = useRef<THREE.Group>(null);
   const frameCount = useRef(0);
+  // Simulation state is mutated every frame, so it lives in a ref, not props
+  const orbRef = useRef(initialOrb);
 
   const trailGeo = useMemo(() => {
     const geo = new THREE.BufferGeometry();
@@ -111,6 +130,7 @@ function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
 
   useFrame(() => {
     if (!groupRef.current) return;
+    const orb = orbRef.current;
     orb.position.add(orb.velocity);
 
     if (Math.abs(orb.position.x) > WALL_X * 0.9) orb.velocity.x *= -1;
@@ -147,17 +167,17 @@ function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
 
   return (
     <>
-      <group ref={groupRef} position={orb.position}>
+      <group ref={groupRef} position={initialOrb.position}>
         {/* Solid colored orb */}
         <mesh>
           <sphereGeometry args={[0.06, 12, 12]} />
-          <meshBasicMaterial color={orb.colorHex} toneMapped={false} />
+          <meshBasicMaterial color={initialOrb.colorHex} toneMapped={false} />
         </mesh>
         {/* Glow around it */}
         <sprite scale={[0.5, 0.5, 1]}>
           <spriteMaterial
             map={glowMap}
-            color={orb.colorHex}
+            color={initialOrb.colorHex}
             transparent
             opacity={0.7}
             depthWrite={false}
@@ -165,7 +185,7 @@ function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
           />
         </sprite>
         <pointLight
-          color={orb.colorHex}
+          color={initialOrb.colorHex}
           intensity={1.5}
           distance={4}
           decay={2}
@@ -174,7 +194,7 @@ function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
       {/* Trail */}
       <primitive object={(() => {
         const mat = new THREE.LineBasicMaterial({
-          color: orb.colorHex,
+          color: initialOrb.colorHex,
           transparent: true,
           opacity: 0.6,
           depthWrite: false,
@@ -189,22 +209,7 @@ function GlowOrb({ orb, glowMap }: { orb: OrbData; glowMap: THREE.Texture }) {
 function Orbs() {
   const glowMap = useMemo(() => makeGlowTexture(), []);
 
-  const orbs = useMemo<OrbData[]>(() =>
-    Array.from({ length: 11 }, () => ({
-      position: new THREE.Vector3(
-        (Math.random() - 0.5) * WALL_X * 1.4,
-        FLOOR_Y + 0.5 + Math.random() * (CEILING_Y - FLOOR_Y - 1),
-        Z_NEAR - 1 - Math.random() * (Z_NEAR - Z_FAR - 2),
-      ),
-      velocity: new THREE.Vector3(
-        (Math.random() - 0.5) * 0.008,
-        (Math.random() - 0.5) * 0.005,
-        (Math.random() - 0.5) * 0.007,
-      ),
-      colorHex: PS2_COLORS[Math.floor(Math.random() * PS2_COLORS.length)],
-      trail: [],
-    })),
-  []);
+  const [orbs] = useState(makeOrbs);
 
   return (
     <>

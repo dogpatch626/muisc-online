@@ -19,7 +19,10 @@
       "Bash(cat dist/assets/*.css)",
       "WebFetch(domain:twistedwonderland.substack.com)",
       "Bash(open:*)",
-      "Bash(pnpm build:*)"
+      "Bash(pnpm build:*)",
+      "Bash(python3 -)",
+      "Bash(sed -i '' \"0,/TODO: real YouTube ID/s/ \\\\/\\\\/ TODO: real YouTube ID//\" src/App.tsx)",
+      "Bash(pnpm -s build)"
     ]
   },
   "enableAllProjectMcpServers": true,

@@ -1,7 +1,7 @@
 .app {
   position: relative;
   z-index: 1;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,8 +34,9 @@
 .wii-stage {
   flex: 1;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
   padding-top: 20px;
   width: 100%;
   max-width: 480px;
@@ -51,5 +52,31 @@
   .wii-stage {
     max-width: 920px;
     padding: 0 48px;
+  }
+}
+
+/* Phone sideways in browse (e.g. after exiting watch): drop chrome, fit tile to the short viewport */
+@media (orientation: landscape) and (pointer: coarse) and (max-height: 500px) {
+  .app {
+    min-height: 100dvh;
+    justify-content: center;
+  }
+
+  .app-logo,
+  .app-footer {
+    display: none;
+  }
+
+  .wii-stage {
+    flex: none;
+    max-width: none;
+    padding: 8px max(20px, env(safe-area-inset-right)) 8px max(20px, env(safe-area-inset-left));
+  }
+
+  /* 146px = tile padding + nav panel + Wii footer; screen is 16:10 */
+  .channel-tile,
+  .notes-content {
+    max-width: calc((100dvh - 146px) * 1.6);
+    margin-inline: auto;
   }
 }
