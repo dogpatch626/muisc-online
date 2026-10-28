@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import type { Post } from '@/types/post';
 import './ChannelTile.css';
 
@@ -62,6 +62,16 @@ export function ChannelTile({
     };
     document.addEventListener('pointerdown', onPointerDown);
     return () => document.removeEventListener('pointerdown', onPointerDown);
+  }, [openBubble]);
+
+  // Phones cap the bubble to the space left below it (see ChannelTile.css). offsetTop
+  // ignores the pop-in transform, so this is right even mid-animation.
+  useLayoutEffect(() => {
+    if (!openBubble) return;
+    const fit = () => bubbleRef.current?.style.setProperty('--bubble-top', `${bubbleRef.current.offsetTop}px`);
+    fit();
+    window.addEventListener('resize', fit);
+    return () => window.removeEventListener('resize', fit);
   }, [openBubble]);
 
   const toggleBubble = (kind: 'notes' | 'mail') => {
@@ -228,6 +238,7 @@ export function ChannelTile({
           }
         }}
       >
+        <div className="notes-scroll">
         {openBubble === 'notes' ? (
           <>
             <span className="notes-label">About this video</span>
@@ -248,6 +259,7 @@ export function ChannelTile({
             ))}
           </>
         )}
+        </div>
       </div>
     )}
     </>

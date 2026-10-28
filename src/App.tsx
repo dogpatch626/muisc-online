@@ -4,48 +4,26 @@ import { ChannelTile } from './components/stage/ChannelTile';
 import { WatchMode } from './components/watch/WatchMode';
 import { embedUrl, thumbnailUrl, type Video } from './types/video';
 import type { Post } from './types/post';
+import currentEntry from './entries/002.json';
 import './App.css';
 
-const videos: Video[] = [
-  {
-    id: '0cDe2pK4SoU',
-    title: 'man in the mirror & Artist of the century',
-    artist: 'MIKE',
-    description: 'We\'re starting off the week with something more recent. MIKE brings two songs together to help present us something so simple yet complicated in all of the small details. This is one that really inspired me to get this project running.',
-  },
-  {
-    id: 'OH9A6tn_P6g', // TODO: real YouTube ID
-    title: 'Ignorance',
-    artist: 'Paramore',
-    description: 'Imagine 2012, playing AdventureQuest Worlds, and suddenly I\'m enthralled by this video popping up on YouTube. Truly one of my first inspirations.',
-  },
-  {
-    id: 'IVNub204dOY', // TODO: real YouTube ID
-    title: 'Go Up ft. Cat Power',
-    artist: 'Cassius, Pharrell Williams',
-    description: 'Cassius, Pharrell and Cat Power work to create an incredible electronic dance track and top it off with a masterclass in creativity by the director Alexandre Courtès.',
-  },
-  {
-    id: 'nhPaWIeULKk', // TODO: real YouTube ID
-    title: 'Stylo',
-    artist: 'Gorillaz',
-    description: 'With such striking vocals from Bobby Womack and an appearance from Bruce Willis, this video embodies what the track feels like, quite the chase.',
-  },
-  {
-    id: 'SBjQ9tuuTJQ', // TODO: real YouTube ID
-    title: 'The Pretender',
-    artist: 'Foo Fighters',
-    description: 'It was hard to choose what to put last, but this is another one of those formative videos that I first saw on MTV growing up. Foo Fighters, while not my favorite band these days, will always be so important because of how early I was introduced to them.',
-  },
-];
+// Weekly entries live in src/entries/NNN.json; bump this import for a new week.
+const videos: Video[] = currentEntry.videos;
 
 // Mailbox posts. Append new ones at the end; the last is the newest.
 const posts: Post[] = [
+
   {
     id: 'welcome',
     title: 'Welcome to Music Online', // TODO: your post
     date: '10/13/2026',
     body: 'Welcome to Music Online, a place to find new music and new music videos to watch! For as long as I can remember I\'ve not only been passionate about music but passionate about the videos attached to them. Music videos are an incredible way to enhance the storytelling of a song, but sometimes they\'re also just cool visuals to pair with it, and so here I present to you a fun project to share the things I love.',
+  },
+  {
+    id: "week two",
+    title: 'Nostalgia Week', // TODO: your post
+    date: '10/28/2026',
+    body: 'Hey yall, its another week of music videos and this week I decided to reminice. To Pander to those who grew up in the 2000\'s and 2010\'s.',
   },
 ];
 

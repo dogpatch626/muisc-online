@@ -61,7 +61,7 @@ Dark/light theme via CSS custom properties. Theme state in `App.tsx`, persisted 
 
 ### Data
 
-Video data is hardcoded in `App.tsx` as a `Video[]` array. The `Video` type is defined in `src/types/video.ts` (id, title, artist, thumbnail, url).
+Each week's 5 videos are an "entry" in `src/entries/NNN.json` (`{ entry, videos }`); `App.tsx` imports the current one. Past entries are kept as the seed for a future DB. The `Video` type is defined in `src/types/video.ts` (id, title, artist, thumbnail, url).
 
 ## Tech Stack
 

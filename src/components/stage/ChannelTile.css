@@ -184,6 +184,29 @@
   pointer-events: none;
 }
 
+/* Scrolls inside the bubble so the glass on ::before stays put. Inline padding
+   leaves room for .mail-post-new's negative margins. */
+.notes-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  margin-inline: -10px;
+  padding-inline: 10px;
+}
+
+/* Phones: fit the bubble between its top and the page footer (~48px incl. gap);
+   --bubble-top is set from ChannelTile.tsx. Floor keeps short screens readable. */
+@media (max-width: 768px) {
+  .notes-content {
+    display: flex;
+    flex-direction: column;
+    max-height: max(160px, calc(100dvh - var(--bubble-top, 0px) - 48px));
+  }
+
+  .notes-scroll {
+    min-height: 0;
+  }
+}
+
 .notes-label {
   display: block;
   font-size: 9px;
